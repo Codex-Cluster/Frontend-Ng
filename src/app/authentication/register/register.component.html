@@ -1,0 +1,50 @@
+<div class="container w-75 mx-auto mt-5">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-5 mx-auto">
+            <form #registrationForm="ngForm" (ngSubmit)="onSubmit()">
+                <div class="form-group p-2">
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Full name"
+                        [(ngModel)]="user.Name" #name='ngModel' required
+                        [class.is-invalid]="name.invalid && name.touched">
+                </div>
+                <small [class.d-none]="name.untouched || name.valid" class="text-danger">This field is required</small>
+                <div class="form-group p-2">
+                    <input type="tel" name="phoneno" id="phoneno" class="form-control" placeholder="Phone No"
+                        [(ngModel)]="user.Mobile" #phoneno='ngModel' required
+                        [class.is-invalid]="phoneno.invalid && phoneno.touched">
+                </div>
+                <small [class.d-none]="phoneno.untouched || phoneno.valid" class="text-danger">This field is
+                    required</small>
+                <div class="form-group p-2">
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Email"
+                        [(ngModel)]="user.Email" #email='ngModel' required
+                        [class.is-invalid]="email.invalid && email.touched">
+                </div>
+                <small [class.d-none]="email.untouched || email.valid" class="text-danger">This field is
+                    required</small>
+                <div class="form-group p-2">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Password"
+                        [(ngModel)]="user.Password" #pswd='ngModel' required
+                        [class.is-invalid]="pswd.invalid && pswd.touched">
+                </div>
+                <small [class.d-none]="pswd.untouched || pswd.valid" class="text-danger">This field is required</small>
+
+                <!-- <div class="form-group p-2">
+                    <div class="form-check">
+                        <input type="checkbox" name="subscribe" class="form-check-input" [(ngModel)]="agreementTerms"
+                            #agreement='ngModel' required [class.is-invalid]="agreement.invalid && agreement.touched">
+                        <label for="" class="form-check-label">I agree to the <span>terms</span> and <span>privacy
+                                policy</span>.</label>
+                    </div>
+                </div>
+                <small [class.d-none]="agreement.untouched || agreement.valid" class="text-danger">Cannot proceed without agreeing</small> -->
+                <div class="text-center pt-2"><input type="submit" class="btn btn-primary"
+                        [disabled]="registrationForm.invalid"
+                        value="Register"></div>
+            </form>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+</div>
