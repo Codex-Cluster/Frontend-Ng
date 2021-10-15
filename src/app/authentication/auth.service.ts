@@ -14,7 +14,7 @@ export class AuthService {
     this.loadLoggedInData()
   }
 
-  BASE_URL: string = "http://localhost:11970/auth"
+  BASE_URL: string = "http://localhost:44391/auth"
   private user: User
 
   login(user: User): Observable<any> {

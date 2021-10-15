@@ -10,25 +10,25 @@ export class DatabaseService {
 
   constructor(private http: HttpClient ) { }
 
-  private BASE_ENDPOINT:string = "https://localhost:44357/api/"
+  private BASE_ENDPOINT:string = "https://localhost:44391/api/"
 
   getBooks(): Observable<any>{
-    return this.http.get(this.BASE_ENDPOINT+'books')
+    return this.http.get(this.BASE_ENDPOINT+'book')
   }
   getCategories(): Observable<any>{
-    return this.http.get(this.BASE_ENDPOINT+'categories')
+    return this.http.get(this.BASE_ENDPOINT+'category')
   }
   getBookByID(id:string): Observable<any>{
-    return this.http.get(this.BASE_ENDPOINT+'books'+'/?isbn='+id)
+    return this.http.get(this.BASE_ENDPOINT+'book'+'/?bookID='+id)
   }
   getBooksByCategory(category:string): Observable<any>{
-    return this.http.get(this.BASE_ENDPOINT+"categories?category="+category)
+    return this.http.get(this.BASE_ENDPOINT+"categories?catID="+category)
   }
 
   updateBook(book:Book): Observable<any>{
     return this.http.put(this.BASE_ENDPOINT+'books',book);
   }
   deleteBook(id:string): Observable<any>{
-    return this.http.delete(this.BASE_ENDPOINT+'books'+'/?isbn='+id);
+    return this.http.delete(this.BASE_ENDPOINT+'books'+'/?bookID='+id);
   }
 }

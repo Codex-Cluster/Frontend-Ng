@@ -11,7 +11,7 @@
                     Score: {{book.Rating}}/5
                 </div>
                 <div class="category">
-                    Category: {{book.Category}}
+                    CatID: {{book.CatID}}
                 </div>
                 <div class="isbn">
                     ISBN: 978{{book.ISBN}}
@@ -53,10 +53,10 @@
                         </tr>
                         <tr>
                             <th>
-                                <label for="categoryLabel">Category: </label>
+                                <label for="categoryLabel">CatID: </label>
                             </th>
                             <td>
-                                <input name="category" type="text" id="categoryLabel" [(ngModel)]="newBook.Category">
+                                <input name="category" type="text" id="categoryLabel" [(ngModel)]="newBook.CatID">
                             </td>
                         </tr>
                         <tr>

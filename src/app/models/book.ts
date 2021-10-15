@@ -7,7 +7,12 @@ export class Book {
     Price?:number
     OldPrice?:number
     Image?:string
-    Category?:string
+    CatID?:string
+    BookID?:string
+    Status?:string
+    Position?:number
+    Description?:string
+    Year?:Date
 
     makeBook(template:Book){
         this.Title = template.Title
@@ -18,7 +23,12 @@ export class Book {
         this.Price = template.Price
         this.OldPrice = template.OldPrice
         this.Image = template.Image
-        this.Category = template.Category
+        this.CatID = template.CatID
+        this.BookID = template.BookID
+        this.Position = template.Position
+        this.Status = template.Status
+        this.Description = template.Description
+        this.Year = template.Year
         return this
     }
 }
