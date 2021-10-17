@@ -1,7 +1,9 @@
 <div class="container w-75 mx-auto mt-5">
     <div class="row">
-        <div class="col-3"></div>
-        <div class="col-5 mx-auto">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-5 mx-auto">
+            <div class="container-fluid flex custom-header-box-success text-center text-success" [class.d-none]="!(registrationForm.submitted && serviceKeyValid)">Successfully registered!</div>
+            <div class="container-fluid flex custom-header-box-danger text-center text-danger" [class.d-none]="!(registrationForm.submitted && !serviceKeyValid)">Invalid Service Key!</div>
             <form #registrationForm="ngForm" (ngSubmit)="onSubmit()">
                 <div class="form-group p-2">
                     <input type="text" name="name" id="name" class="form-control" placeholder="Full name" [(ngModel)]="user.Name" #name='ngModel' required [class.is-invalid]="name.invalid && name.touched">
@@ -17,15 +19,43 @@
                 </div>
                 <small [class.d-none]="email.untouched || email.valid" class="text-danger">This field is
                     required</small>
+
+                <div class="form-group p-2">
+                    <input type="text" name="address" id="address" class="form-control" placeholder="Address" [(ngModel)]="user.Address" #addressTag='ngModel' required [class.is-invalid]="addressTag.invalid && addressTag.touched">
+                </div>
+                <small [class.d-none]="addressTag.untouched || addressTag.valid" class="text-danger">This field is
+                        required</small>
+
                 <div class="form-group p-2">
                     <input type="password" name="password" id="password" class="form-control" placeholder="Password" [(ngModel)]="user.Password" #pswd='ngModel' required [class.is-invalid]="pswd.invalid && pswd.touched">
                 </div>
                 <small [class.d-none]="pswd.untouched || pswd.valid" class="text-danger">This field is required</small>
 
+                <div class="row p-2">
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <input type="checkbox" name="registerAsAdminInput" id="registerAsAdminInput" class="form-check-input" [(ngModel)]="registerAsAdmin" #registerAsAdminTag='ngModel'>
+                            <label class="label px-1" for="registerAsAdminInput"><span>Admin</span></label>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div *ngIf="registerAsAdmin">
+                            <div class="form-group">
+                                <input type="text" name="serviceKeyInput" id="serviceKeyInput" class="form-control" placeholder="Service Key" [(ngModel)]="serviceKey" #serviceKeyTag='ngModel' required [class.is-invalid]="serviceKeyTag.invalid && serviceKeyTag.touched">
+                            </div>
+                            <small [class.d-none]="serviceKeyTag.untouched || serviceKeyTag.valid" class="text-danger">This field is required</small>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
                 <div class="text-center pt-2"><input type="submit" class="btn btn-primary" [disabled]="registrationForm.invalid" value="Register"></div>
             </form>
         </div>
-        <div class="col-3">
+        <div class="col-lg-3">
         </div>
     </div>
 </div>

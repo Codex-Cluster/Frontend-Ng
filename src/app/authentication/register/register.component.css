@@ -1,15 +1,29 @@
-span{
+span {
+    font-weight: 600;
     text-decoration: none;
     color: #B26E63;
 }
-span:hover{
-    font-weight: 600;
+
+
+/* span:hover {
+    
     cursor: pointer;
-}
+} */
+
 .btn {
     background-color: #B26E63;
 }
 
 .btn:hover {
     background-color: #016FB9;
+}
+
+.custom-header-box-danger {
+    border: red solid 1px;
+    border-radius: 10px;
+}
+
+.custom-header-box-success {
+    border: green solid 1px;
+    border-radius: 10px;
 }

@@ -14,7 +14,7 @@ export class AuthService {
     this.loadLoggedInData()
   }
 
-  BASE_URL: string = "http://localhost:44391/auth"
+  BASE_URL: string = "https://localhost:44391/auth"
   private user: User
 
   login(user: User): Observable<any> {
@@ -57,5 +57,17 @@ export class AuthService {
     localStorage.removeItem('user')
     this.user = new User()
     this.route.navigate(['login']).catch((error) => { console.log('Failed to navigate to home') })
+  }
+
+  validateServiceKey(key: string): Observable<any> {
+    return this.http.get(this.BASE_URL + '/validate-key?key=' + key)
+  }
+
+
+  getUserCart():Observable<any>{
+    return this.http.post(this.BASE_URL + '/private/cart', this.user.UserID)
+  }
+  getUserWishlist():Observable<any>{
+    return this.http.post(this.BASE_URL + '/private/wishlist', this.user.UserID)
   }
 }
