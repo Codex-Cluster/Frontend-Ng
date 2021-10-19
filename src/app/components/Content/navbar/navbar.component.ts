@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { DatabaseService } from 'src/app/services/database.service';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,17 +11,21 @@ import { DatabaseService } from 'src/app/services/database.service';
 export class NavbarComponent implements OnInit {
 
   categories: string[] = []
-  constructor(private db: DatabaseService, private route: Router, private auth: AuthService) { }
+  constructor(
+    private categoryService: CategoryService,
+    private route: Router,
+    private auth: AuthService
+  ) { }
 
   navigate(loc: string) {
     this.route.navigate([loc])
   }
 
-  isLoggedIn():boolean{
+  isLoggedIn(): boolean {
     return this.auth.isLoggedIn()
   }
 
-  getUsername(){
+  getUsername() {
     return this.auth.getUsername();
   }
 
@@ -30,7 +34,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.db.getCategories().subscribe(
+    this.categoryService.getCategories().subscribe(
       (response) => {
         this.categories = response
       },

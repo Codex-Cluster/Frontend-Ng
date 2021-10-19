@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { Book } from 'src/app/models/book';
-import { DatabaseService } from 'src/app/services/database.service';
+import { BookService } from 'src/app/services/book.service';
+
 
 @Component({
   selector: 'app-book-details',
@@ -16,7 +17,7 @@ export class BookDetailsComponent implements OnInit {
   newBook: Book = new Book()
   constructor(
     private activatedRoute: ActivatedRoute, 
-    private db: DatabaseService, 
+    private bookService: BookService, 
     private route: Router,
     private auth: AuthService
     ) {
@@ -39,7 +40,7 @@ export class BookDetailsComponent implements OnInit {
   }
   updateBookDetails(){
     this.newBook.OldPrice = this.book.Price;
-    this.db.updateBook(this.newBook).subscribe(
+    this.bookService.updateBook(this.newBook).subscribe(
       (response)=>{
         console.log('Updating record')
       },
@@ -54,7 +55,7 @@ export class BookDetailsComponent implements OnInit {
   }
 
   deleteBook(){
-    this.db.deleteBook(this.book.ISBN!).subscribe(
+    this.bookService.deleteBook(this.book.ISBN!).subscribe(
       (response)=>{
         console.log('Deleting record')
       },
@@ -68,7 +69,7 @@ export class BookDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.db.getBookByID(this.bookID).subscribe(
+    this.bookService.getBookByID(this.bookID).subscribe(
       (response) => {
         this.book = response
       },

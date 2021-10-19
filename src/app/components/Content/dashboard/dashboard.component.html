@@ -1,9 +1,18 @@
-<div class="row">
-    <div class="col-lg-3">
-        <app-side (categoryEmitter)="changeCategory($event)"></app-side>
-    </div>
-    <div class="col-lg-9">
-        <app-main [Books]="Books"></app-main>
-    </div>
-    
+<div class="row my-2 mx-2">
+    <button class="m-2 p-2 custom-container" (click)="navigateToCategory(category.CatID!)" *ngFor="let category of categories">
+        <div class="title">{{category.CatName}}</div>
+        <div class="p-2 h-75 img-container">
+            <img class="card-img-top" src="{{category.Image}}" alt="" width="150px">
+        </div>
+        <div class="author">{{category.CatID}}</div>
+        <div class="d-flex align-items-center  justify-content-between">
+            <div class="d-flex align-items-center">
+                <div class="price d-inline-block">{{ category.CreatedAt }}</div>
+                <div class="oldprice d-inline-block">{{ category.Status}}</div>
+            </div>
+            <div class="rating">
+                Score: {{category.CatDescription}}/5
+            </div>
+        </div>
+    </button>
 </div>

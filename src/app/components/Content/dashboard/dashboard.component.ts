@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Book } from 'src/app/models/book';
-import { DatabaseService } from 'src/app/services/database.service';
+import { Category } from 'src/app/models/category';
+import { BookService } from 'src/app/services/book.service';
+import { CategoryService } from 'src/app/services/category.service';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -9,38 +13,30 @@ import { DatabaseService } from 'src/app/services/database.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private db: DatabaseService) { }
+  constructor(
+    private categoryService : CategoryService,
+    private bookService : BookService,
+    private router : Router
+  ) { }
 
-  changeCategory(category: string) {
-    if (category != 'all') {
-      this.db.getBooksByCategory(category).subscribe(
+  GetAllCategories() {
+      this.categoryService.getCategories().subscribe(
         (response) => {
-          this.Books = response
+          this.categories = response
         },
         (error) => {
           alert("Failed to fetch books by category")
         }
       )
-    } else {
-      this.getBookData();
-    }
-
   }
 
-  getBookData(){
-    this.db.getBooks().subscribe(
-      (response) => {
-        this.Books = response
-      },
-      (error) => {
-        alert("Failed to fetch bookshelf repository!")
-      }
-    );
+  navigateToCategory(catID:string){
+    this.router.navigate(['',catID])
   }
 
-  Books: Book[] = []
+  categories: Category[] = []
   ngOnInit(): void {
-    this.getBookData()
+    this.GetAllCategories()
   }
 
 }

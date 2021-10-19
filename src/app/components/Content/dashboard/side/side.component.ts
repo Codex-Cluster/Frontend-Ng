@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { DatabaseService } from 'src/app/services/database.service';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-side',
@@ -14,10 +14,10 @@ export class SideComponent implements OnInit {
     this.categoryEmitter.emit(category)
   }
   categories: string[] = []
-  constructor(private db: DatabaseService) { }
+  constructor(private categoryService : CategoryService) { }
 
   ngOnInit(): void {
-    this.db.getCategories().subscribe(
+    this.categoryService.getCategories().subscribe(
       (response) =>{
         this.categories = response
       },
