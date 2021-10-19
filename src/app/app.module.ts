@@ -8,13 +8,14 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { LoginComponent } from './authentication/login/login.component';
-import { RegisterComponent } from './authentication/register/register.component';
-import { BookDetailsComponent } from './components/book-details/book-details.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { MainComponent } from './components/dashboard/main/main.component';
-import { SideComponent } from './components/dashboard/side/side.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoginComponent } from './components/authentication/login/login.component';
+import { RegisterComponent } from './components/authentication/register/register.component';
+import { BookDetailsComponent } from './components/Content/book-details/book-details.component';
+import { DashboardComponent } from './components/Content/dashboard/dashboard.component';
+import { MainComponent } from './components/Content/dashboard/main/main.component';
+import { SideComponent } from './components/Content/dashboard/side/side.component';
+import { NavbarComponent } from './components/Content/navbar/navbar.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     NgxPaginationModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

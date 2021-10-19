@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/authentication/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { Book } from 'src/app/models/book';
 import { DatabaseService } from 'src/app/services/database.service';
 
