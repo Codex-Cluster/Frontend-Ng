@@ -12,12 +12,18 @@ import { LoginComponent } from './components/authentication/login/login.componen
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { BookDetailsComponent } from './components/Content/book-details/book-details.component';
 import { DashboardComponent } from './components/Content/dashboard/dashboard.component';
-import { MainComponent } from './components/Content/booksdisplay/main/main.component';
-import { SideComponent } from './components/Content/booksdisplay/side/side.component';
+import { MainComponent } from './components/Content/books-display/main/main.component';
+import { SideComponent } from './components/Content/books-display/side/side.component';
 import { NavbarComponent } from './components/Content/navbar/navbar.component';
 import { AuthService } from './services/auth.service';
 import { MakeDatePipe } from './pipes/make-date.pipe';
-import { BooksdisplayComponent } from './components/Content/booksdisplay/booksdisplay.component';
+import { BooksdisplayComponent } from './components/Content/books-display/books-display.component';
+import { AddBookComponent } from './components/Content/books-display/add-book/add-book.component';
+import { AddCategoryComponent } from './components/Content/dashboard/add-category/add-category.component';
+
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -30,14 +36,18 @@ import { BooksdisplayComponent } from './components/Content/booksdisplay/booksdi
     LoginComponent,
     RegisterComponent,
     MakeDatePipe,
-    BooksdisplayComponent
+    BooksdisplayComponent,
+    AddBookComponent,
+    AddCategoryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

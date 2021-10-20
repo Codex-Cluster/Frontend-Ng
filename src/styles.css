@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 body {
     font-family: 'IBM Plex Sans', sans-serif;
 }

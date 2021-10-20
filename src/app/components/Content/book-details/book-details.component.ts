@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { Book } from 'src/app/models/book';
 import { BookService } from 'src/app/services/book.service';
+import { AdminService } from 'src/app/services/admin.service';
 
 
 @Component({
@@ -19,20 +20,37 @@ export class BookDetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute, 
     private bookService: BookService, 
     private route: Router,
-    private auth: AuthService
+    private auth: AuthService,
+    private admin: AdminService
     ) {
     this.bookID = this.activatedRoute.snapshot.paramMap.get('id')!.toString()
   }
 
-  isLoggedIn(){
-    return this.auth.isLoggedIn()
+  isAdmin(){
+    return this.admin.isAdmin()
   }
   editModeToggle: boolean = false;
 
   toggleEditMode(){
     this.editModeToggle = !this.editModeToggle
     if(this.editModeToggle === true){
-      this.newBook = new Book().makeBook(this.book);
+      this.newBook = new Book()
+      this.newBook = {
+        Title: this.book.Title,
+        Author: this.book.Author,
+        Format: this.book.Format,
+        ISBN: this.book.ISBN,
+        Rating: this.book.Rating,
+        Price: this.book.Price,
+        OldPrice: this.book.OldPrice,
+        Image: this.book.Image,
+        CatID: this.book.CatID,
+        BookID: this.book.BookID,
+        Position: this.book.Position,
+        Status: this.book.Status,
+        Description: this.book.Description,
+        Year: this.book.Year
+      }
     }
     else{
       this.newBook = new Book()

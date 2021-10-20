@@ -4,12 +4,14 @@ import { LoginComponent } from './components/authentication/login/login.componen
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { BookDetailsComponent } from './components/Content/book-details/book-details.component';
 import { DashboardComponent } from './components/Content/dashboard/dashboard.component';
-import { BooksdisplayComponent } from './components/Content/booksdisplay/booksdisplay.component';
+import { BooksdisplayComponent } from './components/Content/books-display/books-display.component';
+import { AddBookComponent } from './components/Content/books-display/add-book/add-book.component';
 
 const routes: Routes = [
   { path: "", component: DashboardComponent },
   { path: "books/:catID", component: BooksdisplayComponent },
   { path: "book/:id", component: BookDetailsComponent },
+  { path: "book/add", component: AddBookComponent },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent }
 ];

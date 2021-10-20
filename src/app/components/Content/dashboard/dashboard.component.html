@@ -1,5 +1,6 @@
 <h2 class="m-2 p-2 text-center">Choose category</h2>
 <div class="row my-2 mx-2">
+    <button *ngIf="isAdmin()" class="m-2 p-2 custom-container-box"><i class="bi bi-plus-circle-fill h1"></i></button>
     <button class="m-2 p-2 custom-container-box" (click)="highlightCategoryInfo(i)" *ngFor="let category of categories; let i = index" [class.custom-container-panel]="ifHighlighted(i)">
     <div class="title">{{ category.CatName }}</div>
     <div class="p-2" [class.row]="ifHighlighted(i)">
@@ -24,7 +25,12 @@
             </div>
           </div>
           <div>
-            <input type="button" class="btn btn-primary" value="Show" (click)="navigateToCategory(category.CatID!)"/>
+            <input
+              type="button"
+              class="btn btn-primary"
+              value="Show"
+              (click)="navigateToCategory(category.CatID!)"
+            />
           </div>
         </div>
       </div>

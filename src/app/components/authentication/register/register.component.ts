@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from '../../../services/auth.service';
 
@@ -12,7 +13,10 @@ export class RegisterComponent implements OnInit {
   user: User
   agreementTerms: boolean = false;
 
-  constructor(private auth: AuthService) {
+  constructor(
+    private auth: AuthService,
+    private router: Router
+    ) {
     this.user = new User()
   }
   registerAsAdmin: boolean = false
@@ -29,6 +33,7 @@ export class RegisterComponent implements OnInit {
               (response) => {
                 console.log("Attempting to register user...")
                 this.auth.saveLoggedInData(this.user)
+                this.router.navigate([''])  
               },
               (error) => {
                 alert("Error registering user")
@@ -48,6 +53,7 @@ export class RegisterComponent implements OnInit {
         (response) => {
           console.log("Attempting to register user...")
           this.auth.saveLoggedInData(this.user)
+          this.router.navigate([''])
         },
         (error) => {
           alert("Error registering user")

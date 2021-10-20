@@ -6,9 +6,9 @@ import { BookService } from 'src/app/services/book.service';
 import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
-  selector: 'app-booksdisplay',
-  templateUrl: './booksdisplay.component.html',
-  styleUrls: ['./booksdisplay.component.css']
+  selector: 'app-books-display',
+  templateUrl: './books-display.component.html',
+  styleUrls: ['./books-display.component.css']
 })
 export class BooksdisplayComponent implements OnInit {
 
@@ -55,5 +55,4 @@ export class BooksdisplayComponent implements OnInit {
     this.router.navigate(['books',this.catID])
     this.getBooks(this.catID)
   }
-
 }

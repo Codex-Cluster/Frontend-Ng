@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private route: Router,
-    private auth: AuthService
+    private auth: AuthService,
   ) { }
 
   navigate(loc: string) {
