@@ -25,19 +25,18 @@ export class RegisterComponent implements OnInit {
         (response) => {
           if (response) {
             this.user.Roles = ['Default', 'Admin']
-            console.log(this.user)
-            // this.auth.register(this.user).subscribe(
-            //   (response) => {
-            //     console.log("Attempting to register user...")
-            //     this.auth.saveLoggedInData(this.user)
-            //   },
-            //   (error) => {
-            //     alert("Error registering user")
-            //   },
-            //   () => {
-            //     alert("Successfully registered user!")
-            //   }
-            // )
+            this.auth.register(this.user).subscribe(
+              (response) => {
+                console.log("Attempting to register user...")
+                this.auth.saveLoggedInData(this.user)
+              },
+              (error) => {
+                alert("Error registering user")
+              },
+              () => {
+                alert("Successfully registered user!")
+              }
+            )
           } else {
             this.serviceKeyValid = false
           }

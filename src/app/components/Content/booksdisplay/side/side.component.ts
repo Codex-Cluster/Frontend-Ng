@@ -1,4 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
@@ -8,13 +10,25 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class SideComponent implements OnInit {
 
+  @Input() presentCategory:string
   @Output() categoryEmitter = new EventEmitter()
 
   changeCategory(category:string){
     this.categoryEmitter.emit(category)
   }
-  categories: string[] = []
-  constructor(private categoryService : CategoryService) { }
+  categories: Category[] = []
+
+  ifHighlightCategory(category:string):boolean{
+    if(this.presentCategory == category){
+      return true
+    }else{
+      return false
+    }
+  }
+
+  constructor(private categoryService : CategoryService, private activatedRoute : ActivatedRoute) { 
+    this.presentCategory = ''
+   }
 
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe(

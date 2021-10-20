@@ -29,9 +29,26 @@ export class DashboardComponent implements OnInit {
         }
       )
   }
+  highlightedIndex:number = -1;
+  highlightCategoryInfo(idx: number){
+    if(this.highlightedIndex == idx ){
+      this.highlightedIndex = -1
+    }
+    else{
+      this.highlightedIndex = idx
+    }
+  }
+  ifHighlighted(idx:number){
+    if(this.highlightedIndex == idx){
+      return true
+    }
+    else{
+      return false
+    }
+  }
 
   navigateToCategory(catID:string){
-    this.router.navigate(['',catID])
+    this.router.navigate(['books',catID])
   }
 
   categories: Category[] = []

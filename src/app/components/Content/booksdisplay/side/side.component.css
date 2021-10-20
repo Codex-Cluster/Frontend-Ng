@@ -6,6 +6,10 @@
     background-color: rgb(150, 150, 150);
 }
 
-.w-82{
+.w-82 {
     width: 82%;
+}
+
+.highlight {
+    background-color: grey;
 }

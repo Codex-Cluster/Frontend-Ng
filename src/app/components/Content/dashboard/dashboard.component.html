@@ -1,18 +1,33 @@
+<h2 class="m-2 p-2 text-center">Choose category</h2>
 <div class="row my-2 mx-2">
-    <button class="m-2 p-2 custom-container" (click)="navigateToCategory(category.CatID!)" *ngFor="let category of categories">
-        <div class="title">{{category.CatName}}</div>
-        <div class="p-2 h-75 img-container">
-            <img class="card-img-top" src="{{category.Image}}" alt="" width="150px">
-        </div>
-        <div class="author">{{category.CatID}}</div>
-        <div class="d-flex align-items-center  justify-content-between">
-            <div class="d-flex align-items-center">
-                <div class="price d-inline-block">{{ category.CreatedAt }}</div>
-                <div class="oldprice d-inline-block">{{ category.Status}}</div>
+    <button class="m-2 p-2 custom-container-box" (click)="highlightCategoryInfo(i)" *ngFor="let category of categories; let i = index" [class.custom-container-panel]="ifHighlighted(i)">
+    <div class="title">{{ category.CatName }}</div>
+    <div class="p-2" [class.row]="ifHighlighted(i)">
+      <div class="h-75 img-container" [class.col-5]="ifHighlighted(i)">
+        <img
+          class="card-img-top"
+          src="{{ category.Image }}"
+          alt=""
+          width="150px"
+        />
+      </div>
+      <!-- <div class="description mx-auto">{{category.CatDescription}}</div> -->
+      <div [class.d-none]="!ifHighlighted(i)" class="col-7 infoPanel h-100">
+        <div class="h-100 flex-column justify-content-between">
+          <div class="text-start">
+            <div>{{ category.CatDescription }}</div>
+            <div>
+              <p>
+                <span class="fw-bold">Created at : </span>
+                {{ category.CreatedAt! | makeDate }}
+              </p>
             </div>
-            <div class="rating">
-                Score: {{category.CatDescription}}/5
-            </div>
+          </div>
+          <div>
+            <input type="button" class="btn btn-primary" value="Show" (click)="navigateToCategory(category.CatID!)"/>
+          </div>
         </div>
-    </button>
+      </div>
+    </div>
+  </button>
 </div>

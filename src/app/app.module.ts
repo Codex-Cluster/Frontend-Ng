@@ -12,10 +12,12 @@ import { LoginComponent } from './components/authentication/login/login.componen
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { BookDetailsComponent } from './components/Content/book-details/book-details.component';
 import { DashboardComponent } from './components/Content/dashboard/dashboard.component';
-import { MainComponent } from './components/Content/dashboard/main/main.component';
-import { SideComponent } from './components/Content/dashboard/side/side.component';
+import { MainComponent } from './components/Content/booksdisplay/main/main.component';
+import { SideComponent } from './components/Content/booksdisplay/side/side.component';
 import { NavbarComponent } from './components/Content/navbar/navbar.component';
 import { AuthService } from './services/auth.service';
+import { MakeDatePipe } from './pipes/make-date.pipe';
+import { BooksdisplayComponent } from './components/Content/booksdisplay/booksdisplay.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AuthService } from './services/auth.service';
     SideComponent,
     BookDetailsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    MakeDatePipe,
+    BooksdisplayComponent
   ],
   imports: [
     BrowserModule,
