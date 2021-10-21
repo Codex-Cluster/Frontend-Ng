@@ -61,4 +61,8 @@ export class DashboardComponent implements OnInit {
     this.GetAllCategories()
   }
 
+  goToAddCategory(){
+    this.router.navigate(['admin/addCategory'])
+  }
+
 }

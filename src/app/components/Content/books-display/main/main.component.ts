@@ -34,6 +34,6 @@ export class MainComponent implements OnInit {
   
 
   goToAddBook(){
-    this.route.navigate(['book/add']).catch((error)=>{console.log("Failed to navigate to Add book page")})
+    this.route.navigate(['admin/addBook']).catch((error)=>{console.log("Failed to navigate to Add book page")})
   }
 }
