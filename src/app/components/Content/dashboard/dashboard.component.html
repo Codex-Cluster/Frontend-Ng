@@ -27,9 +27,16 @@
           <div>
             <input
               type="button"
-              class="btn btn-primary"
+              class="btn btn-primary m-1 p-1"
               value="Show"
               (click)="navigateToCategory(category.CatID!)"
+            />
+            <input
+              *ngIf="isAdmin()"
+              type="button"
+              class="btn btn-danger m-1 p-1"
+              value="Delete"
+              (click)="DeleteCategory(category!)"
             />
           </div>
         </div>

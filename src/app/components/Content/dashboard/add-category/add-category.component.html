@@ -1,7 +1,10 @@
 <div class="container">
     <div class="row m-2">
         <div class="col-lg-4">
-            <img width="100%" src="" alt="" />
+            <div>
+                <input type="file" (change)="setUploadFile($event)" />
+            </div>
+            <div *ngIf="imageChanged"><img width="100%" [src]="imageFile" alt="" /></div>
         </div>
         <div class="col-lg-8 p-2">
             <div>
@@ -55,13 +58,14 @@
                                 <input class="form-control" name="createdAt" type="text" id="createdAtLabel" [(ngModel)]="newCategory.CreatedAt" />
                             </td>
                         </tr>
-
                     </table>
                 </form>
             </div>
 
             <div class="pt-2 admin-controls" *ngIf="isAdmin()">
-                <button class="btn btn-primary d-inline-block" (click)="AddCategory()">add</button>
+                <button class="btn btn-primary d-inline-block" (click)="AddCategory()">
+          add
+        </button>
             </div>
         </div>
     </div>

@@ -3,17 +3,29 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Observable } from 'rxjs';
 import { ImageUpload } from '../models/image-upload';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FirestorageService {
+  constructor(private storage: AngularFireStorage) {}
 
-  constructor(private storage: AngularFireStorage) { }
-  uploadFile(event:any) {
-    const file = event.target.files[0];
-    const filePath = 'UserImages/';
+  file: any;
+  basePath: string[] = ['CategoryImages/', 'BookImages/'];
+  setFile(file: any) {
+    this.file = file;
+  }
+
+  image:any
+  async uploadFile(type: number, filename: string) {
+    const file = this.file;
+    const filePath = this.basePath[type] + filename;
+    const task = this.storage.upload(filePath, file);
     const ref = this.storage.ref(filePath);
-    const task = ref.put(file);
+
+    await task;
+    console.log('Image uploaded!');
+    this.image = await ref.getDownloadURL().toPromise();
+
+    return this.image
   }
 }

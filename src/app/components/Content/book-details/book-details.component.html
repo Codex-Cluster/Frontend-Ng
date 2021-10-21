@@ -91,7 +91,7 @@
                 <button class="btn btn-warning d-inline-block" (click)="toggleEditMode()">
                     Edit
                 </button>
-                <button class="btn btn-danger d-inline-block" *ngIf="!editModeToggle">
+                <button class="btn btn-danger d-inline-block" *ngIf="!editModeToggle" (click)="deleteBook()">
                     Delete
                 </button>
                 <button class="btn btn-primary d-inline-block" *ngIf="editModeToggle" (click)="updateBookDetails()">

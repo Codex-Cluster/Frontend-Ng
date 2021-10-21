@@ -23,6 +23,7 @@ export class BookService {
     return this.http.put(this.BASE_URL, book);
   }
   createBook(book: Book): Observable<any> {
+    console.log(book)
     return this.http.post(this.BASE_URL, book)
   }
   deleteBook(id: string): Observable<any> {

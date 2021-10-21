@@ -56,6 +56,20 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['books',catID])
   }
 
+  DeleteCategory(category:Category){
+    this.categoryService.DeleteCategory(category).subscribe(
+      (response)=>{
+        this.GetAllCategories()
+        if(response == true){
+          console.log('Successfully deleted category')
+        }
+      },
+      (error)=>{
+        console.log(error)
+      }
+    )
+  }
+
   categories: Category[] = []
   ngOnInit(): void {
     this.GetAllCategories()

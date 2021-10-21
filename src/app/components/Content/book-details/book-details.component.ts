@@ -73,7 +73,7 @@ export class BookDetailsComponent implements OnInit {
   }
 
   deleteBook(){
-    this.bookService.deleteBook(this.book.ISBN!).subscribe(
+    this.bookService.deleteBook(this.book.BookID!).subscribe(
       (response)=>{
         console.log('Deleting record')
       },
@@ -82,6 +82,7 @@ export class BookDetailsComponent implements OnInit {
       },
       ()=>{
         alert("Successfully deleted record")
+        this.route.navigate([''])
       }
     )
   }
