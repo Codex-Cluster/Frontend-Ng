@@ -5,6 +5,7 @@ import { Category } from 'src/app/models/category';
 import { AdminService } from 'src/app/services/admin.service';
 import { BookService } from 'src/app/services/book.service';
 import { CategoryService } from 'src/app/services/category.service';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,12 +15,23 @@ import { CategoryService } from 'src/app/services/category.service';
 
 export class DashboardComponent implements OnInit {
 
+  orders:any
   constructor(
     private categoryService : CategoryService,
     private bookService : BookService,
     private router : Router,
-    private admin: AdminService
-  ) { }
+    private admin: AdminService,
+    private orderService: OrderService
+  ) { 
+    this.orderService.getOrders('user_00012').subscribe(
+      (response)=>{
+        console.log(response)
+      },
+      (error)=>{
+        console.log(error)
+      }
+    )
+  }
 
   isAdmin(){
     return this.admin.isAdmin()

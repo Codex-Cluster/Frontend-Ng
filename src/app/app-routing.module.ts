@@ -7,6 +7,9 @@ import { DashboardComponent } from './components/Content/dashboard/dashboard.com
 import { BooksdisplayComponent } from './components/Content/books-display/books-display.component';
 import { AddBookComponent } from './components/Content/books-display/add-book/add-book.component';
 import { AddCategoryComponent } from './components/Content/dashboard/add-category/add-category.component';
+import { OrdersComponent } from './components/Content/user/orders/orders.component';
+import { WishlistComponent } from './components/Content/user/wishlist/wishlist.component';
+import { CartComponent } from './components/Content/user/cart/cart.component';
 
 const routes: Routes = [
   { path: "", component: DashboardComponent },
@@ -15,7 +18,10 @@ const routes: Routes = [
   { path: "admin/addBook", component: AddBookComponent },
   { path: "admin/addCategory", component: AddCategoryComponent },
   { path: "login", component: LoginComponent },
-  { path: "register", component: RegisterComponent }
+  { path: "register", component: RegisterComponent },
+  { path: "user/orders", component: OrdersComponent },
+  { path: "user/wishlist", component: WishlistComponent },
+  { path: "user/cart", component: CartComponent },
 ];
 
 @NgModule({

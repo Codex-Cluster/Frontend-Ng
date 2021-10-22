@@ -29,6 +29,10 @@ export class NavbarComponent implements OnInit {
     return this.auth.getUsername();
   }
 
+  GoToOrders(){
+    this.route.navigate(['user/orders'])
+  }
+
   logout() {
     this.auth.logout()
   }

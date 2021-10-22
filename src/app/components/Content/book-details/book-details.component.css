@@ -1,7 +1,8 @@
-input{
+input {
     border: 1px black solid;
 }
-input:focus{
+
+input:focus {
     border: 1px #0F7173 dashed;
     outline: 0 none;
 }

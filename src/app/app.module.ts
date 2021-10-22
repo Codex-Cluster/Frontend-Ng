@@ -26,6 +26,10 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from '../environments/environment';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { OrdersComponent } from './components/Content/user/orders/orders.component';
+import { WishlistComponent } from './components/Content/user/wishlist/wishlist.component';
+import { CartComponent } from './components/Content/user/cart/cart.component';
+import { DetailsComponent } from './components/payments/details/details.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,11 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     MakeDatePipe,
     BooksdisplayComponent,
     AddBookComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    OrdersComponent,
+    WishlistComponent,
+    CartComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
