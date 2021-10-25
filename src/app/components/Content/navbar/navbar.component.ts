@@ -32,6 +32,12 @@ export class NavbarComponent implements OnInit {
   GoToOrders(){
     this.route.navigate(['user/orders'])
   }
+  GoToWishlist(){
+    this.route.navigate(['user/wishlist'])
+  }
+  GoToCart(){
+    this.route.navigate(['user/cart'])
+  }
 
   logout() {
     this.auth.logout()

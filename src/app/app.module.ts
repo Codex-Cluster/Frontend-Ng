@@ -48,7 +48,7 @@ import { DetailsComponent } from './components/payments/details/details.componen
     OrdersComponent,
     WishlistComponent,
     CartComponent,
-    DetailsComponent
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,

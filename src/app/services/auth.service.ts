@@ -52,6 +52,9 @@ export class AuthService {
   getUsername(): string {
     return this.user.Name!
   }
+  getUserID(): string {
+    return this.user.UserID!
+  }
 
   logout() {
     localStorage.removeItem('user')

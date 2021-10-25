@@ -20,18 +20,8 @@ export class DashboardComponent implements OnInit {
     private categoryService : CategoryService,
     private bookService : BookService,
     private router : Router,
-    private admin: AdminService,
-    private orderService: OrderService
-  ) { 
-    this.orderService.getOrders('user_00012').subscribe(
-      (response)=>{
-        console.log(response)
-      },
-      (error)=>{
-        console.log(error)
-      }
-    )
-  }
+    private admin: AdminService
+  ) { }
 
   isAdmin(){
     return this.admin.isAdmin()

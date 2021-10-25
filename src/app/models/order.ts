@@ -1,6 +1,6 @@
-import { Book } from "./book";
+import { Book } from './book';
 
-export class Order extends Book{
+export class Order extends Book {
   OrderID?: number;
   UserID?: string;
   Books?: string;
@@ -8,12 +8,12 @@ export class Order extends Book{
   Coupon?: string;
   Amt?: number;
   Address?: string;
+  qty?: number;
 }
 export class OrderDetails {
   n_orders?: number;
   orderDetails?: Dictionary[];
 }
-class Dictionary {
-  n_orders?: string;
-  orders?: Order;
+export class Dictionary {
+  [key: string]: Order;
 }
