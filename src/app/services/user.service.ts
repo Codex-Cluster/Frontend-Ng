@@ -33,6 +33,12 @@ export class UserService {
       {}
     );
   }
+  MoveToCart(userID: string, item: string, qty: number): Observable<any> {
+    return this.http.put(
+      this.BASE_URL + `/wishlist?userID=${userID}&item=${item}&qty=${qty}`,
+      {}
+    );
+  }
 
   //CART
   getCart(userID: string): Observable<any> {
@@ -53,6 +59,12 @@ export class UserService {
   DeleteFromCart(userID: string, item: string): Observable<any> {
     return this.http.post(
       this.BASE_URL + `/cart?userID=${userID}&item=${item}&operation=Delete`,
+      {}
+    );
+  }
+  MoveToWishlist(userID: string, item: string, qty: number): Observable<any> {
+    return this.http.put(
+      this.BASE_URL + `/cart?userID=${userID}&item=${item}&qty=${qty}`,
       {}
     );
   }

@@ -20,9 +20,17 @@ export class WishlistComponent implements OnInit {
   username() {
     return this.auth.getUsername();
   }
+  moveToCart(item: string, qty: number) {
+    this.userService
+      .MoveToCart(this.auth.getUserID(), item, qty)
+      .subscribe((response) => {
+        console.log(`Successfully moved ${item}:${qty} to cart`);
+        this.getWishlist();
+      });
+  }
 
-  ngOnInit(): void {
-    this.userService.getCart(this.auth.getUserID()).subscribe(
+  getWishlist() {
+    this.userService.getWishlist(this.auth.getUserID()).subscribe(
       (response) => {
         this.wishlist = response;
       },
@@ -30,5 +38,9 @@ export class WishlistComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  ngOnInit(): void {
+    this.getWishlist();
   }
 }

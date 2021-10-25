@@ -17,7 +17,16 @@ export class CartComponent implements OnInit {
     private auth: AuthService
   ) {}
 
-  ngOnInit(): void {
+  moveToWishlist(item: string, qty: number) {
+    this.userService
+      .MoveToWishlist(this.auth.getUserID(), item, qty)
+      .subscribe((response) => {
+        console.log(`Successfully moved ${item}:${qty} to wishlist`);
+        this.getCart();
+      });
+  }
+
+  getCart() {
     this.userService.getCart(this.auth.getUserID()).subscribe(
       (response) => {
         this.cart = response;
@@ -26,5 +35,8 @@ export class CartComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+  ngOnInit(): void {
+    this.getCart();
   }
 }
