@@ -25,6 +25,20 @@ export class CartComponent implements OnInit {
         this.getCart();
       });
   }
+  removeItem(bookID: string) {
+    this.userService.RemoveFromCart(this.auth.getUserID(), bookID).subscribe(
+      (response) => {
+        console.log('Removing book');
+      },
+      (error) => {
+        console.log('Error removing book');
+      },
+      () => {
+        console.log('Successfully removed book');
+        this.getCart();
+      }
+    );
+  }
 
   getCart() {
     this.userService.getCart(this.auth.getUserID()).subscribe(

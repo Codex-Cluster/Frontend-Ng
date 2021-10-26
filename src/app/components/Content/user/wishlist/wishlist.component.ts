@@ -39,6 +39,22 @@ export class WishlistComponent implements OnInit {
       }
     );
   }
+  removeItem(bookID: string) {
+    this.userService
+      .RemoveFromWishList(this.auth.getUserID(), bookID)
+      .subscribe(
+        (response) => {
+          console.log('Removing book');
+        },
+        (error) => {
+          console.log('Error removing book');
+        },
+        () => {
+          console.log('Successfully removed book');
+          this.getWishlist();
+        }
+      );
+  }
 
   ngOnInit(): void {
     this.getWishlist();

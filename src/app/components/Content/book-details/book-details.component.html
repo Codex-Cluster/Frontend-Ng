@@ -1,116 +1,153 @@
 <div class="container">
-    <div class="row m-2">
-        <div class="col-lg-4">
-            <img width="100%" src="{{book.Image}}" alt="">
-        </div>
-        <div class="col-lg-8">
-            <div *ngIf="!editModeToggle">
-                <div class="title">{{book.Title}}</div>
-                <div class="author">{{book.Author}}</div>
-                <div class="rating">
-                    Score: {{book.Rating}}/5
-                </div>
-                <div class="category">
-                    CatID: {{book.CatID}}
-                </div>
-                <div class="isbn">
-                    ISBN: {{book.ISBN}}
-                </div>
-                <div class="d-flex align-items-center">
-                    <div class="price d-inline-block">{{book.Price | currency: 'USD' }}</div>
-                    <div class="oldprice d-inline-block">{{book.OldPrice}}</div>
-                </div>
-                <div class="format">
-                    Format: {{book.Format}}
-                </div>
-            </div>
-            <div *ngIf="editModeToggle">
-                <form>
-                    <table>
-                        <tr>
-                            <th>
-                                <label for="titleLabel">Title: </label>
-                            </th>
-                            <td>
-                                <input name='title' type="text" id='titleLabel' [(ngModel)]="newBook.Title">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="authorLabel">Author: </label>
-                            </th>
-                            <td>
-                                <input name='author' type="text" [(ngModel)]="newBook.Author">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="ratingLabel">Rating: </label>
-                            </th>
-                            <td>
-                                <input name='rating' type="text" id="ratingLabel" [(ngModel)]="newBook.Rating">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="categoryLabel">CatID: </label>
-                            </th>
-                            <td>
-                                <input name="category" type="text" id="categoryLabel" [(ngModel)]="newBook.CatID">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="isbnLabel">ISBN: </label>
-                            </th>
-                            <td>
-                                <input name="isbn" type="text" id="isbnLabel" [(ngModel)]="newBook.ISBN">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="priceLabel">Price: </label>
-                            </th>
-                            <td>
-                                <input name="price" type="text" id="priceLabel" [(ngModel)]="newBook.Price">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="formatLabel">Format: </label>
-                            </th>
-                            <td>
-                                <input name="format" type="text" id="formatLabel" [(ngModel)]="newBook.Format">
-                            </td>
-                        </tr>
-                    </table>
-                </form>
-            </div>
-
-            <div class="admin-controls d-flex align-items-center" *ngIf="isAdmin()">
-                <button class="btn btn-warning d-inline-block p-1 m-1" (click)="toggleEditMode()">
-                    Edit
-                </button>
-                <button class="btn btn-danger d-inline-block p-1 m-1" *ngIf="!editModeToggle" (click)="deleteBook()">
-                    Delete
-                </button>
-                <button class="btn btn-primary d-inline-block p-1 m-1" *ngIf="editModeToggle" (click)="updateBookDetails()">
-                    Submit
-                </button>
-            </div>
-            <div class="admin-controls d-flex align-items-center">
-
-                <button class="btn btn-primary d-inline-block p-1 m-1">
-                    <i class="bi bi-bookmark-heart h5"></i>
-                </button>
-                <button class="btn btn-warning d-inline-block p-1 m-1">
-                    Add to cart
-                </button>
-                <button class="btn btn-success d-inline-block p-1 m-1">
-                    Buy Now
-                </button>
-
-            </div>
-        </div>
+  <div class="row m-2">
+    <div class="col-lg-4">
+      <img width="100%" src="{{ book.Image }}" alt="" />
     </div>
+    <div class="col-lg-8">
+      <div *ngIf="!editModeToggle">
+        <div class="title">{{ book.Title }}</div>
+        <div class="author">{{ book.Author }}</div>
+        <div class="rating">Score: {{ book.Rating }}/5</div>
+        <div class="category">CatID: {{ book.CatID }}</div>
+        <div class="isbn">ISBN: {{ book.ISBN }}</div>
+        <div class="d-flex align-items-center">
+          <div class="price d-inline-block">
+            {{ book.Price | currency: "USD" }}
+          </div>
+          <div class="oldprice d-inline-block">{{ book.OldPrice }}</div>
+        </div>
+        <div class="format">Format: {{ book.Format }}</div>
+      </div>
+      <div *ngIf="editModeToggle">
+        <form>
+          <table>
+            <tr>
+              <th>
+                <label for="titleLabel">Title: </label>
+              </th>
+              <td>
+                <input
+                  name="title"
+                  type="text"
+                  id="titleLabel"
+                  [(ngModel)]="newBook.Title"
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="authorLabel">Author: </label>
+              </th>
+              <td>
+                <input name="author" type="text" [(ngModel)]="newBook.Author" />
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="ratingLabel">Rating: </label>
+              </th>
+              <td>
+                <input
+                  name="rating"
+                  type="text"
+                  id="ratingLabel"
+                  [(ngModel)]="newBook.Rating"
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="categoryLabel">CatID: </label>
+              </th>
+              <td>
+                <input
+                  name="category"
+                  type="text"
+                  id="categoryLabel"
+                  [(ngModel)]="newBook.CatID"
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="isbnLabel">ISBN: </label>
+              </th>
+              <td>
+                <input
+                  name="isbn"
+                  type="text"
+                  id="isbnLabel"
+                  [(ngModel)]="newBook.ISBN"
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="priceLabel">Price: </label>
+              </th>
+              <td>
+                <input
+                  name="price"
+                  type="text"
+                  id="priceLabel"
+                  [(ngModel)]="newBook.Price"
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="formatLabel">Format: </label>
+              </th>
+              <td>
+                <input
+                  name="format"
+                  type="text"
+                  id="formatLabel"
+                  [(ngModel)]="newBook.Format"
+                />
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+
+      <div class="admin-controls d-flex align-items-center" *ngIf="isAdmin()">
+        <button
+          class="btn btn-warning d-inline-block p-1 m-1"
+          (click)="toggleEditMode()"
+        >
+          Edit
+        </button>
+        <button
+          class="btn btn-danger d-inline-block p-1 m-1"
+          *ngIf="!editModeToggle"
+          (click)="deleteBook()"
+        >
+          Delete
+        </button>
+        <button
+          class="btn btn-primary d-inline-block p-1 m-1"
+          *ngIf="editModeToggle"
+          (click)="updateBookDetails()"
+        >
+          Submit
+        </button>
+      </div>
+      <div class="admin-controls d-flex align-items-center">
+        <button
+          class="btn btn-primary d-inline-block p-1 m-1"
+          (click)="AddToWishlist()"
+        >
+          <i class="bi bi-bookmark-heart h5"></i>
+        </button>
+        <button
+          class="btn btn-warning d-inline-block p-1 m-1"
+          (click)="AddToCart()"
+        >
+          Add to cart
+        </button>
+        <button class="btn btn-success d-inline-block p-1 m-1">Buy Now</button>
+      </div>
+    </div>
+  </div>
 </div>

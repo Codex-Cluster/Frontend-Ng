@@ -1,6 +1,9 @@
 <h2 class="m-2 p-2 text-center">{{ username() }}'s wishlist</h2>
 <div class="row my-2 mx-2">
-    <button class="m-2 p-2 custom-container-panel mx-auto" *ngFor="let book of wishlist; let i = index">
+  <button
+    class="m-2 p-2 custom-container-panel mx-auto"
+    *ngFor="let book of wishlist; let i = index"
+  >
     <div class="p-2 row">
       <div class="img-container col-3">
         <img class="card-img-top" src="{{ book.Image }}" alt="" />
@@ -37,6 +40,7 @@
                 type="button"
                 class="btn btn-danger m-1 p-1"
                 value="Remove"
+                (click)="removeItem(book.BookID!)"
               />
             </div>
           </div>
