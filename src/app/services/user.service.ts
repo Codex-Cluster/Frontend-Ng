@@ -1,13 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { User } from '../models/user';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   BASE_URL: string = 'https://localhost:44391/user';
-  constructor(private http: HttpClient) {}
+  user: User;
+  constructor(private http: HttpClient, private auth: AuthService) {
+    if (this.auth.isLoggedIn()) {
+      this.user = this.auth.getUser();
+    } else {
+      this.user = new User();
+    }
+  }
+
+  // PROFILE
+  getUserData(): User {
+    return this.user;
+  }
 
   // WISHLIST
   getWishlist(userID: string): Observable<any> {

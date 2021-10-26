@@ -16,6 +16,10 @@ export class AuthService {
   BASE_URL: string = 'https://localhost:44391/auth';
   private user: User;
 
+  getUser() {
+    return this.user;
+  }
+
   login(user: User): Observable<any> {
     return this.http.post(this.BASE_URL + '/login', user);
   }
