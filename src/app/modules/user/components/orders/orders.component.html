@@ -1,0 +1,51 @@
+<h2 class="m-2 p-2 text-center">Purchases made</h2>
+<div class="row my-2 mx-2">
+  <button
+    class="m-2 p-2 custom-container-panel mx-auto"
+    *ngFor="let order of orders; let i = index"
+  >
+    <div *ngFor="let book of order">
+      <div class="p-2 row">
+        <div class="img-container col-3">
+          <img class="card-img-top" src="{{ book.Image }}" alt="" />
+        </div>
+        <div class="col-7 infoPanel h-100">
+          <div class="h-100 flex-column justify-content-between">
+            <div class="d-inline">
+              <div class="title text-start">{{ book.Title }}</div>
+              <div class="text-start">
+                <div>{{ book.Author }}</div>
+                <div>
+                  <!-- <p>
+                    <span class="fw-bold">Purchased on : </span>
+                    {{ book.datetime! }}
+                  </p> -->
+                </div>
+                <div>
+                  <p>
+                    <span class="fw-bold">Quantity : </span>
+                    {{ book.qty! }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="d-inline-block">
+              <div>
+                <input
+                  type="button"
+                  class="btn btn-primary m-1 p-1"
+                  value="Track"
+                />
+                <input
+                  type="button"
+                  class="btn btn-danger m-1 p-1"
+                  value="Cancel"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </button>
+</div>

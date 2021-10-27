@@ -1,0 +1,84 @@
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar-red">
+  <div class="container-fluid">
+    <a class="navbar-brand" (click)="navigate('')"
+      >Bookshelf
+      <img src="assets/images/bookshelf.png" alt="" width="35px" class="m-2" />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Categories
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item">All</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li *ngFor="let cat of categories"><a class="dropdown-item" href="#">{{cat}}</a></li>
+                </ul>
+              </li>
+            </ul> -->
+      <form class="d-flex">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class="btn custom-nav-btn-color" type="submit">Search</button>
+      </form>
+      <div class="d-flex mx-auto"></div>
+
+      <button
+        *ngIf="isAdmin()"
+        class="btn btn-wishlist d-inline-block"
+        (click)="GoToAdmin()"
+      >
+        <i class="bi bi-shield-lock-fill"></i>
+      </button>
+
+      <button class="btn btn-wishlist d-inline-block" (click)="GoToOrders()">
+        <i class="bi bi-bag-check-fill"></i>
+      </button>
+
+      <button class="btn btn-wishlist d-inline-block" (click)="GoToWishlist()">
+        <i class="bi bi-bookmark-heart-fill"></i>
+      </button>
+
+      <button class="btn btn-wishlist d-inline-block" (click)="GoToCart()">
+        <i class="bi bi-cart-fill"></i>
+      </button>
+
+      <button class="btn btn-wishlist d-inline-block" (click)="GoToProfile()">
+        <i class="bi bi-person-circle"></i>
+      </button>
+      <div *ngIf="isLoggedIn()" class="h-100 p-2 mx-1 my-auto username">
+        {{ getUsername() }}
+      </div>
+      <button
+        *ngIf="!isLoggedIn()"
+        class="p-2 mx-1 btn custom-nav-btn-color"
+        routerLink="/auth/login"
+      >
+        Login
+      </button>
+      <button
+        *ngIf="isLoggedIn()"
+        class="p-2 mx-1 btn custom-nav-btn-color"
+        (click)="logout()"
+      >
+        Sign out
+      </button>
+    </div>
+  </div>
+</nav>
