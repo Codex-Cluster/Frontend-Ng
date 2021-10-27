@@ -49,7 +49,7 @@ export class BooksdisplayComponent implements OnInit {
   changeCategory(category: string) {
     this.catID = category;
     this.getCatName();
-    this.router.navigate(['books', this.catID]);
+    this.router.navigate(['category', this.catID]);
     this.getBooks(this.catID);
   }
 }

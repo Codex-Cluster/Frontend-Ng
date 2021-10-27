@@ -1,9 +1,14 @@
 <div class="container">
   <div class="row m-2">
+    <div class="col-lg-1">
+      <button class="btn" (click)="goBack()">
+        <i class="bi bi-arrow-left-circle-fill h1"></i>
+      </button>
+    </div>
     <div class="col-lg-4">
       <img width="100%" src="{{ book.Image }}" alt="" />
     </div>
-    <div class="col-lg-8">
+    <div class="col-lg-7">
       <div *ngIf="!editModeToggle">
         <div class="title">{{ book.Title }}</div>
         <div class="author">{{ book.Author }}</div>

@@ -30,6 +30,7 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {}
 
   navigateToBook(book: Book) {
+    this.catID = this.activatedRoute.snapshot.paramMap.get('catID');
     this.route
       .navigate(['category', this.catID, 'book', book.BookID])
       .catch((error) => {

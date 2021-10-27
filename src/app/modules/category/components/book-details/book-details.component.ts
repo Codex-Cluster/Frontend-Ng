@@ -5,6 +5,7 @@ import { Book } from 'src/app/shared/models/book';
 import { BookService } from 'src/app/shared/services/book.service';
 import { AdminService } from 'src/app/shared/services/admin.service';
 import { UserService } from 'src/app/shared/services/user.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-book-details',
@@ -21,7 +22,8 @@ export class BookDetailsComponent implements OnInit {
     private route: Router,
     private auth: AuthService,
     private admin: AdminService,
-    private userService: UserService
+    private userService: UserService,
+    private location: Location
   ) {
     this.bookID = this.activatedRoute.snapshot.paramMap.get('id')!.toString();
   }
@@ -29,8 +31,12 @@ export class BookDetailsComponent implements OnInit {
   isAdmin() {
     return this.admin.isAdmin();
   }
-  editModeToggle: boolean = false;
 
+  goBack() {
+    this.location.back();
+  }
+
+  editModeToggle: boolean = false;
   toggleEditMode() {
     this.editModeToggle = !this.editModeToggle;
     if (this.editModeToggle === true) {
