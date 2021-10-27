@@ -1,6 +1,6 @@
 <div class="row">
-  <div class="col-lg-3"></div>
-  <div class="col-lg-6">
+  <div class="col-lg-2"></div>
+  <div class="col-lg-8">
     <div class="container mt-5">
       <table class="table table-borderless">
         <caption>
@@ -55,7 +55,7 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-3"></div>
+  <div class="col-lg-2"></div>
 </div>
 
 <!-- Modal -->
@@ -287,6 +287,7 @@
           type="button"
           class="btn btn-primary"
           [disabled]="EditFormGroup.invalid"
+          data-bs-dismiss="modal"
           (click)="saveChanges()"
         >
           Save changes

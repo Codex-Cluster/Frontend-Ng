@@ -1,7 +1,7 @@
 export class Coupon {
-    Id?:number
-    Code?:string
-    Creator?:string
-    Discount?:number
-    Status?:string
+  id?: number;
+  code?: string;
+  creator?: string;
+  discount?: number;
+  status?: string;
 }

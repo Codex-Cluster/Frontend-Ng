@@ -1,0 +1,10 @@
+.green {
+  color: #0f7352;
+}
+.red {
+  color: #f37c7c;
+}
+
+.card:hover {
+  cursor: pointer;
+}

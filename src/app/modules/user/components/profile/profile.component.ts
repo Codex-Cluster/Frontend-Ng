@@ -61,7 +61,7 @@ export class ProfileComponent implements OnInit {
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
 
-    // Add our fruit
+    // Add new role
     if (value) {
       this.userEditable.Roles!.push(value);
     }
@@ -92,7 +92,6 @@ export class ProfileComponent implements OnInit {
   }
   saveChanges() {
     this.user = { ...this.user, ...this.EditFormGroup.value };
-    console.log(this.user);
     this.userService.modifyUserData(this.user).subscribe(
       (response) => {
         if (response) {

@@ -1,0 +1,101 @@
+<div>
+  <div class="row">
+    <div class="col-lg-1">
+      <button class="btn" (click)="goBack()">
+        <i class="bi bi-arrow-left-circle-fill h1"></i>
+      </button>
+    </div>
+    <div class="col-lg-11">
+      <div
+        class="card mx-3 my-1 p-2"
+        *ngFor="let coupon of couponList"
+        (click)="setSelectedCoupon(coupon)"
+        data-bs-toggle="modal"
+        data-bs-target="#editCouponModal"
+      >
+        <div class="row">
+          <div class="col-lg-3">
+            <div>Code:</div>
+            <div>Creator:</div>
+            <div>Discount:</div>
+          </div>
+          <div class="col-lg-5">
+            <div>{{ coupon.code! }}</div>
+            <div>{{ coupon.creator! }}</div>
+            <div>{{ coupon.discount }}%</div>
+          </div>
+          <div class="col-lg-2 mx-auto">
+            <div>Status</div>
+            <div
+              [ngClass]="{
+                green: coupon.status == 'active',
+                red: coupon.status == 'inactive'
+              }"
+            >
+              {{ coupon.status! }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="editCouponModal"
+  tabindex="-1"
+  aria-labelledby="editCouponModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editCouponModalLabel">Edit Coupon</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-3">
+            <div>Code:</div>
+            <div>Creator:</div>
+            <div>Discount:</div>
+          </div>
+          <div class="col-lg-5 form-group">
+            <div class="form-input">
+              <input type="text" value="{{ couponSelected.code! }}" />
+            </div>
+            <div>
+              <input type="text" value="{{ couponSelected.creator! }}" />
+            </div>
+            <div>
+              <input type="text" value="{{ couponSelected.discount! }}" />
+            </div>
+          </div>
+          <div class="col-lg-2 mx-auto">
+            <div>Status</div>
+            <div
+              [ngClass]="{
+                green: couponSelected.status == 'active',
+                red: couponSelected.status == 'inactive'
+              }"
+            >
+              <input type="text" value="{{ couponSelected.status! }}" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

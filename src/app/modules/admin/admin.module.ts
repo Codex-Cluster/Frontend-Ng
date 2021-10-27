@@ -16,9 +16,12 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
 import { initializeApp } from '@firebase/app';
 import { environment } from 'src/environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CouponComponent } from './components/coupon/coupon.component';
+import { UsersComponent } from './components/users/users.component';
+import { ControlsComponent } from './components/controls/controls.component';
 
 @NgModule({
-  declarations: [AdminComponent, AddBookComponent, AddCategoryComponent],
+  declarations: [AdminComponent, AddBookComponent, AddCategoryComponent, CouponComponent, UsersComponent, ControlsComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
