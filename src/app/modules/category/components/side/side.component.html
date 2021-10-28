@@ -1,7 +1,17 @@
 <div class="w-82 mx-auto p-2">
   <ul class="list-group">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#sideBarContent"
+      aria-controls="sideBarContent"
+      aria-expanded="false"
+      aria-label="Toggle side bar"
+    ></button>
     <!-- <li class="list-group-item" (click)="changeCategory('all')">All</li> -->
     <li
+      id="sideBarContent"
       class="list-group-item"
       [class.highlight]="ifHighlightCategory(cat.CatID!)"
       *ngFor="let cat of categories"

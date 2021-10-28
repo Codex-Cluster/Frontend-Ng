@@ -6,7 +6,289 @@
       </button>
     </div>
     <div class="col-lg-11">
-      <div class="card mx-3 p-2"></div>
+      <div
+        class="card mx-3 my-1 p-2"
+        *ngFor="let user of userList"
+        (click)="setSelectedUser(user)"
+        data-bs-toggle="modal"
+        data-bs-target="#EditUserInfoModal"
+      >
+        <div class="row">
+          <div class="col-lg-10">
+            <div class="row">
+              <div class="col-lg-3">
+                <div>ID:</div>
+              </div>
+              <div class="col-lg-5">
+                <div>{{ user.UserID! }}</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3">
+                <div>Name:</div>
+              </div>
+              <div class="col-lg-5">
+                <div>{{ user.Name! }}</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3"><div>Email:</div></div>
+              <div class="col-lg-5">
+                <div>{{ user.Email }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 mx-auto">
+            <div>Status</div>
+            <div
+              [ngClass]="{
+                green: user.Active == true,
+                red: user.Active == false
+              }"
+            >
+              {{ user.Active! }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="EditUserInfoModal"
+  tabindex="-1"
+  aria-labelledby="EditUserInfoModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="EditUserInfoModalLabel">Modal title</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="userEditFormGroup">
+          <div class="row">
+            <div class="col-3">
+              <div class="p-2 fw-bolder">ID</div>
+            </div>
+            <div class="col-9">
+              <td class="p-2">
+                {{ userEditable.UserID }}
+              </td>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3">
+              <div class="p-2 fw-bolder">Name</div>
+            </div>
+            <div class="col-9">
+              <div class="p-2">
+                <div class="form-group p-2">
+                  <input
+                    type="text"
+                    [value]="userEditFormGroup.get('Name')?.value"
+                    formControlName="Name"
+                    [ngClass]="{
+                      'is-invalid':
+                        userEditFormGroup.get('Name')?.invalid &&
+                        userEditFormGroup.get('Name')?.touched
+                    }"
+                  />
+                  <div class="invalid-feedback">
+                    <div
+                      *ngIf="userEditFormGroup.get('Name')?.errors?.required"
+                      class="text-danger"
+                    >
+                      Name is required
+                    </div>
+                    <div
+                      *ngIf="userEditFormGroup.get('Name')?.errors?.pattern"
+                      class="text-danger"
+                    >
+                      Name cannot contain digits or special characters
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3">
+              <div class="p-2 fw-bolder">Email</div>
+            </div>
+            <div class="col-9">
+              <div class="p-2">
+                <div class="form-group p-2">
+                  <input
+                    type="text"
+                    [value]="userEditFormGroup.get('Email')?.value"
+                    formControlName="Email"
+                    [ngClass]="{
+                      'is-invalid':
+                        userEditFormGroup.get('Email')?.invalid &&
+                        userEditFormGroup.get('Email')?.touched
+                    }"
+                  />
+                  <div class="invalid-feedback">
+                    <div
+                      *ngIf="userEditFormGroup.get('Email')?.errors?.required"
+                      class="text-danger"
+                    >
+                      Email is required
+                    </div>
+                    <div
+                      *ngIf="userEditFormGroup.get('Email')?.errors?.email"
+                      class="text-danger"
+                    >
+                      The entered email is not a valid one
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3">
+              <div class="p-2 fw-bolder">Mobile</div>
+            </div>
+            <div class="col-9">
+              <div class="p-2">
+                <div class="form-group p-2">
+                  <input
+                    type="text"
+                    [value]="userEditFormGroup.get('Mobile')?.value"
+                    formControlName="Mobile"
+                    [ngClass]="{
+                      'is-invalid':
+                        userEditFormGroup.get('Mobile')?.invalid &&
+                        userEditFormGroup.get('Mobile')?.touched
+                    }"
+                  />
+                  <div class="invalid-feedback">
+                    <div
+                      *ngIf="userEditFormGroup.get('Mobile')?.errors?.required"
+                      class="text-danger"
+                    >
+                      Mobile is required
+                    </div>
+                    <div
+                      *ngIf="userEditFormGroup.get('Mobile')?.errors?.pattern"
+                      class="text-danger"
+                    >
+                      Mobile can only contain digits, brackets and + sign
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3">
+              <div class="p-2 fw-bolder">Address</div>
+            </div>
+            <div class="col-9">
+              <div class="p-2">
+                <div class="form-group p-2">
+                  <input
+                    type="text"
+                    [value]="userEditFormGroup.get('Address')?.value"
+                    formControlName="Address"
+                    [ngClass]="{
+                      'is-invalid':
+                        userEditFormGroup.get('Address')?.invalid &&
+                        userEditFormGroup.get('Address')?.touched
+                    }"
+                  />
+                  <div class="invalid-feedback">
+                    <div
+                      *ngIf="userEditFormGroup.get('Address')?.errors?.required"
+                      class="text-danger"
+                    >
+                      Address is required
+                    </div>
+                    <div
+                      *ngIf="userEditFormGroup.get('Address')?.errors?.pattern"
+                      class="text-danger"
+                    >
+                      Address cannot contain special characters
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3">
+              <div class="p-2 fw-bolder">Roles</div>
+            </div>
+            <div class="col-9">
+              <div class="p-2">
+                <mat-form-field class="w-100" appearance="fill">
+                  <mat-chip-list #chipList aria-label="Fruit selection">
+                    <mat-chip
+                      *ngFor="let role of userEditable.Roles!"
+                      [selectable]="selectable"
+                      [removable]="removable"
+                      (removed)="remove(role)"
+                    >
+                      {{ role }}
+                      <button matChipRemove *ngIf="removable">
+                        <mat-icon>cancel</mat-icon>
+                      </button>
+                    </mat-chip>
+                    <input
+                      placeholder="New role..."
+                      [formControl]="roleCtrl"
+                      [matChipInputFor]="chipList"
+                      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                      (matChipInputTokenEnd)="add($event)"
+                    />
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3">
+              <div class="p-2 fw-bolder">Active</div>
+            </div>
+            <div class="col-9">
+              <div class="p-2">
+                <mat-radio-group formControlName="Active">
+                  <mat-radio-button class="mx-2" value="true"
+                    >true</mat-radio-button
+                  >
+                  <mat-radio-button class="mx-2" value="false"
+                    >false</mat-radio-button
+                  >
+                </mat-radio-group>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          [disabled]="userEditFormGroup.invalid"
+          data-bs-dismiss="modal"
+          (click)="saveChanges()"
+        >
+          Save changes
+        </button>
+      </div>
     </div>
   </div>
 </div>

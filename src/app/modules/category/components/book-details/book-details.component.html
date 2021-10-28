@@ -116,29 +116,32 @@
         </form>
       </div>
 
-      <div class="admin-controls d-flex align-items-center" *ngIf="isAdmin()">
-        <button
-          class="btn btn-warning d-inline-block p-1 m-1"
-          (click)="toggleEditMode()"
-        >
-          Edit
-        </button>
-        <button
-          class="btn btn-danger d-inline-block p-1 m-1"
-          *ngIf="!editModeToggle"
-          (click)="deleteBook()"
-        >
-          Delete
-        </button>
-        <button
-          class="btn btn-primary d-inline-block p-1 m-1"
-          *ngIf="editModeToggle"
-          (click)="updateBookDetails()"
-        >
-          Submit
-        </button>
+      <div class="card border border-1 rounded" *ngIf="isAdmin()">
+        <div class="d-flex align-items-center">
+          <div class="fw-light p-1">Admin controls</div>
+          <button
+            class="btn btn-warning d-inline-block p-1 m-1"
+            (click)="toggleEditMode()"
+          >
+            Edit
+          </button>
+          <button
+            class="btn btn-danger d-inline-block p-1 m-1"
+            *ngIf="!editModeToggle"
+            (click)="deleteBook()"
+          >
+            Delete
+          </button>
+          <button
+            class="btn btn-primary d-inline-block p-1 m-1"
+            *ngIf="editModeToggle"
+            (click)="updateBookDetails()"
+          >
+            Submit
+          </button>
+        </div>
       </div>
-      <div class="admin-controls d-flex align-items-center">
+      <div class="d-flex align-items-center">
         <button
           class="btn btn-primary d-inline-block p-1 m-1"
           (click)="AddToWishlist()"

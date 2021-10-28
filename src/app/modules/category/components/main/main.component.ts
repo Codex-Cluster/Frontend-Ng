@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/shared/models/book';
@@ -17,9 +18,13 @@ export class MainComponent implements OnInit {
   constructor(
     private route: Router,
     private admin: AdminService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private location: Location
   ) {
     this.catID = this.activatedRoute.snapshot.paramMap.get('catID');
+  }
+  goBack() {
+    this.location.back();
   }
 
   isAdmin() {

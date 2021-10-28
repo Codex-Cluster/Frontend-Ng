@@ -32,6 +32,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/payment/payment.module').then((m) => m.PaymentModule),
   },
+  {
+    path: '**',
+    loadChildren: () =>
+      import('./shared/shared.module').then((m) => m.SharedModule),
+  },
 ];
 
 @NgModule({

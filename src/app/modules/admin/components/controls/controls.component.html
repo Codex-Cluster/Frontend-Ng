@@ -3,20 +3,24 @@
     <div class="col-4"><p class="p-2 my-auto fw-bold fs-4">Action</p></div>
     <div class="col-8"><p class="p-2 my-auto fw-bold fs-4">Utility</p></div>
   </div>
-  <div class="row">
-    <div class="col-4">
-      <button class="btn btn-success" (click)="goTo('coupon')">Coupons</button>
+  <div class="p-2 border border-1 rounded">
+    <div class="row">
+      <div class="col-4">
+        <button class="btn btn-success" (click)="goTo('coupon')">
+          Coupons
+        </button>
+      </div>
+      <div class="col-8">
+        <p class="p-2 my-auto">Manage coupons</p>
+      </div>
     </div>
-    <div class="col-8">
-      <p class="p-2 my-auto">Manage coupons</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-4">
-      <button class="btn btn-primary" (click)="goTo('users')">Users</button>
-    </div>
-    <div class="col-8">
-      <p class="p-2 my-auto">Manage users</p>
+    <div class="row">
+      <div class="col-4">
+        <button class="btn btn-primary" (click)="goTo('users')">Users</button>
+      </div>
+      <div class="col-8">
+        <p class="p-2 my-auto">Manage users</p>
+      </div>
     </div>
   </div>
 </div>

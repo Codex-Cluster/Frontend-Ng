@@ -6,6 +6,14 @@
       </button>
     </div>
     <div class="col-lg-11">
+      <button
+        class="btn btn-primary mx-3 my-1 p-2"
+        (click)="AddNewCoupon()"
+        data-bs-toggle="modal"
+        data-bs-target="#editCouponModal"
+      >
+        Add
+      </button>
       <div
         class="card mx-3 my-1 p-2"
         *ngFor="let coupon of couponList"
@@ -60,41 +68,90 @@
         ></button>
       </div>
       <div class="modal-body">
-        <div class="row">
-          <div class="col-lg-3">
-            <div>Code:</div>
-            <div>Creator:</div>
-            <div>Discount:</div>
+        <form [formGroup]="CouponEditFormGroup">
+          <div class="row">
+            <div class="col-lg-10">
+              <div class="row">
+                <div class="col-3">
+                  <div class="p-2">Code:</div>
+                </div>
+                <div class="col-5">
+                  <div class="form-group p-2">
+                    <input type="text" formControlName="code" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                  <div class="p-2">Creator:</div>
+                </div>
+                <div class="col-5">
+                  <div class="form-group p-2">
+                    <input type="text" formControlName="creator" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                  <div class="p-2">Discount:</div>
+                </div>
+                <div class="col-5">
+                  <div class="form-group p-2">
+                    <input type="text" formControlName="discount" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                  <div class="p-2">Status</div>
+                </div>
+                <div class="col-5">
+                  <div class="form-group p-2">
+                    <mat-radio-group formControlName="status">
+                      <mat-radio-button class="mx-2" value="active"
+                        >active</mat-radio-button
+                      >
+                      <mat-radio-button class="mx-2" value="inactive"
+                        >inactive</mat-radio-button
+                      >
+                    </mat-radio-group>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-lg-5 form-group">
-            <div class="form-input">
-              <input type="text" value="{{ couponSelected.code! }}" />
-            </div>
-            <div>
-              <input type="text" value="{{ couponSelected.creator! }}" />
-            </div>
-            <div>
-              <input type="text" value="{{ couponSelected.discount! }}" />
-            </div>
-          </div>
-          <div class="col-lg-2 mx-auto">
-            <div>Status</div>
-            <div
-              [ngClass]="{
-                green: couponSelected.status == 'active',
-                red: couponSelected.status == 'inactive'
-              }"
-            >
-              <input type="text" value="{{ couponSelected.status! }}" />
-            </div>
-          </div>
-        </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button
+          *ngIf="modify"
+          type="button"
+          class="btn btn-primary"
+          (click)="saveChanges()"
+          data-bs-dismiss="modal"
+        >
+          Save changes
+        </button>
+        <button
+          *ngIf="!modify"
+          type="button"
+          class="btn btn-primary"
+          (click)="addCoupon()"
+          data-bs-dismiss="modal"
+        >
+          Add
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="deleteCoupon()"
+          data-bs-dismiss="modal"
+        >
+          Delete
+        </button>
       </div>
     </div>
   </div>

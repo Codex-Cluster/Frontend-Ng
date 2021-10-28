@@ -19,9 +19,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CouponComponent } from './components/coupon/coupon.component';
 import { UsersComponent } from './components/users/users.component';
 import { ControlsComponent } from './components/controls/controls.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
-  declarations: [AdminComponent, AddBookComponent, AddCategoryComponent, CouponComponent, UsersComponent, ControlsComponent],
+  declarations: [
+    AdminComponent,
+    AddBookComponent,
+    AddCategoryComponent,
+    CouponComponent,
+    UsersComponent,
+    ControlsComponent,
+  ],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -31,6 +45,13 @@ import { ControlsComponent } from './components/controls/controls.component';
     provideStorage(() => getStorage()),
     FormsModule,
     ReactiveFormsModule,
+    MatChipsModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatAutocompleteModule,
+    MatCheckboxModule,
+    MatRadioModule,
   ],
   providers: [AdminService, FirestorageService, CategoryService, BookService],
 })
