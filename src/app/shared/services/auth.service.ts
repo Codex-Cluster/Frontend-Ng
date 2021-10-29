@@ -35,11 +35,8 @@ export class AuthService {
 
   loadLoggedInData() {
     let user = JSON.parse(localStorage.getItem('user')!);
-    if (user == null) {
-      console.log('User not logged in');
-    } else {
+    if (user != null) {
       this.user = user;
-      console.log(`${this.user.Email} is logged in`);
     }
   }
   isLoggedIn(): boolean {
@@ -59,7 +56,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('user');
     this.user = new User();
-    this.route.navigate(['login']).catch((error) => {
+    this.route.navigate(['auth', 'login']).catch((error) => {
       console.log('Failed to navigate to home');
     });
   }

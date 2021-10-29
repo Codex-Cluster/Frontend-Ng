@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Book } from 'src/app/shared/models/book';
 import { Category } from 'src/app/shared/models/category';
 import { AdminService } from 'src/app/shared/services/admin.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { BookService } from 'src/app/shared/services/book.service';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { OrderService } from 'src/app/shared/services/order.service';
@@ -18,7 +19,8 @@ export class DashboardComponent implements OnInit {
     private categoryService: CategoryService,
     private bookService: BookService,
     private router: Router,
-    private admin: AdminService
+    private admin: AdminService,
+    private auth: AuthService
   ) {}
 
   isAdmin() {
@@ -71,6 +73,7 @@ export class DashboardComponent implements OnInit {
   categories: Category[] = [];
   ngOnInit(): void {
     this.GetAllCategories();
+    this.auth.loadLoggedInData();
   }
 
   goToAddCategory() {
