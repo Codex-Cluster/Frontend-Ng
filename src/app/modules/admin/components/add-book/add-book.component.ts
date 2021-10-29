@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Book } from 'src/app/shared/models/book';
@@ -24,7 +25,8 @@ export class AddBookComponent implements OnInit {
     private categoryService: CategoryService,
     private bookService: BookService,
     private fbStorage: FirestorageService,
-    private route: Router
+    private route: Router,
+    private location: Location
   ) {
     this.newBook = {
       Title: '',
@@ -94,5 +96,8 @@ export class AddBookComponent implements OnInit {
     };
 
     this.fbStorage.setFile(event.target.files[0]);
+  }
+  goBack() {
+    this.location.back();
   }
 }

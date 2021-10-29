@@ -1,106 +1,170 @@
 <div class="container">
-    <div class="row m-2">
-        <div class="col-lg-4">
-            <div>
-                <input type="file" (change)="setUploadFile($event)">
-            </div>
-            <div *ngIf="imageChanged"><img width="100%" [src]="imageFile" alt="" /></div>
+  <div class="row m-2">
+    <div class="col-lg-4">
+      <div>
+        <div class="col-lg-1">
+          <button class="btn" (click)="goBack()">
+            <i class="bi bi-arrow-left-circle-fill h1"></i>
+          </button>
         </div>
-        <div class="col-lg-8 p-2">
-            <div>
-                <form>
-                    <table>
-                        <tr>
-                            <th>
-                                <label for="titleLabel">Title: </label>
-                            </th>
-                            <td>
-                                <input class="form-control" name="title" type="text" id="titleLabel" [(ngModel)]="newBook.Title" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="authorLabel">Author: </label>
-                            </th>
-                            <td>
-                                <input class="form-control" name="author" type="text" [(ngModel)]="newBook.Author" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="descriptionLabel">Description: </label>
-                            </th>
-                            <td>
-                                <input class="form-control" name="description" type="text" id="descriptionLabel" [(ngModel)]="newBook.Description" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="ratingLabel">Rating: </label>
-                            </th>
-                            <td>
-                                <input class="form-control" name="rating" type="number" id="ratingLabel" [(ngModel)]="newBook.Rating" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="categoryLabel">Categories: </label>
-                            </th>
-                            <td>
-                                <select class="form-control" name="category" type="text" id="categoryLabel" [(ngModel)]="category">
+        <div class="text-center fw-bold">Image</div>
+        <hr />
+        <input type="file" (change)="setUploadFile($event)" />
+      </div>
+      <div *ngIf="imageChanged">
+        <img width="100%" [src]="imageFile" alt="" />
+      </div>
+    </div>
+    <div class="col-lg-8 p-2">
+      <div>
+        <form>
+          <table>
+            <tr>
+              <th>
+                <label for="titleLabel">Title: </label>
+              </th>
+              <td>
+                <input
+                  class="form-control"
+                  name="title"
+                  type="text"
+                  id="titleLabel"
+                  [(ngModel)]="newBook.Title"
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="authorLabel">Author: </label>
+              </th>
+              <td>
+                <input
+                  class="form-control"
+                  name="author"
+                  type="text"
+                  [(ngModel)]="newBook.Author"
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="descriptionLabel">Description: </label>
+              </th>
+              <td>
+                <input
+                  class="form-control"
+                  name="description"
+                  type="text"
+                  id="descriptionLabel"
+                  [(ngModel)]="newBook.Description"
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="ratingLabel">Rating: </label>
+              </th>
+              <td>
+                <input
+                  class="form-control"
+                  name="rating"
+                  type="number"
+                  id="ratingLabel"
+                  [(ngModel)]="newBook.Rating"
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="categoryLabel">Categories: </label>
+              </th>
+              <td>
+                <select
+                  class="form-control"
+                  name="category"
+                  type="text"
+                  id="categoryLabel"
+                  [(ngModel)]="category"
+                >
                   <option disabled>Choose Category</option>
                   <option>Select Category</option>
                   <option *ngFor="let category of categories">
                     {{ category.CatName }}
                   </option>
                 </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="isbnLabel">ISBN: </label>
-                            </th>
-                            <td>
-                                <input class="form-control" name="isbn" type="number" id="isbnLabel" [(ngModel)]="newBook.ISBN" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="priceLabel">Price: </label>
-                            </th>
-                            <td>
-                                <input class="form-control" name="price" type="number" id="priceLabel" [(ngModel)]="newBook.Price" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="formatLabel">Format: </label>
-                            </th>
-                            <td>
-                                <select class="form-control" name="format" type="text" id="formatLabel" [(ngModel)]="newBook.Format">
-                                    <option disabled>Choose Format</option>
-                                    <option>Select Format</option>
-                                    <option *ngFor="let f of formats">
-                                      {{ f }}
-                                    </option>
-                                  </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="yearLabel">Year: </label>
-                            </th>
-                            <td>
-                                <input class="form-control" name="year" type="date" id="yearLabel" [(ngModel)]="newBook.Year" />
-                            </td>
-                        </tr>
-                    </table>
-                </form>
-            </div>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="isbnLabel">ISBN: </label>
+              </th>
+              <td>
+                <input
+                  class="form-control"
+                  name="isbn"
+                  type="number"
+                  id="isbnLabel"
+                  [(ngModel)]="newBook.ISBN"
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="priceLabel">Price: </label>
+              </th>
+              <td>
+                <input
+                  class="form-control"
+                  name="price"
+                  type="number"
+                  id="priceLabel"
+                  [(ngModel)]="newBook.Price"
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="formatLabel">Format: </label>
+              </th>
+              <td>
+                <select
+                  class="form-control"
+                  name="format"
+                  type="text"
+                  id="formatLabel"
+                  [(ngModel)]="newBook.Format"
+                >
+                  <option disabled>Choose Format</option>
+                  <option>Select Format</option>
+                  <option *ngFor="let f of formats">
+                    {{ f }}
+                  </option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="yearLabel">Year: </label>
+              </th>
+              <td>
+                <input
+                  class="form-control"
+                  name="year"
+                  type="date"
+                  id="yearLabel"
+                  [(ngModel)]="newBook.Year"
+                />
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
 
-            <div class="pt-2 admin-controls" *ngIf="isAdmin()">
-                <button class="btn btn-primary d-inline-block" (click)="AddBook()">add</button>
-            </div>
-        </div>
+      <div class="pt-2 admin-controls" *ngIf="isAdmin()">
+        <button class="btn btn-primary d-inline-block" (click)="AddBook()">
+          add
+        </button>
+      </div>
     </div>
+  </div>
 </div>

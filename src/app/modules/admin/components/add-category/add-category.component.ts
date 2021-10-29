@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/shared/models/category';
@@ -19,7 +20,8 @@ export class AddCategoryComponent implements OnInit {
     private admin: AdminService,
     private categoryService: CategoryService,
     private fbStorage: FirestorageService,
-    private route: Router
+    private route: Router,
+    private location: Location
   ) {
     this.newCategory = {
       CatID: '',
@@ -64,5 +66,8 @@ export class AddCategoryComponent implements OnInit {
     };
 
     this.fbStorage.setFile(event.target.files[0]);
+  }
+  goBack() {
+    this.location.back();
   }
 }

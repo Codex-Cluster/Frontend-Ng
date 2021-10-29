@@ -1,72 +1,117 @@
 <div class="container">
-    <div class="row m-2">
-        <div class="col-lg-4">
-            <div>
-                <input type="file" (change)="setUploadFile($event)" />
-            </div>
-            <div *ngIf="imageChanged"><img width="100%" [src]="imageFile" alt="" /></div>
+  <div class="row m-2">
+    <div class="col-lg-4">
+      <div>
+        <div class="col-lg-1">
+          <button class="btn" (click)="goBack()">
+            <i class="bi bi-arrow-left-circle-fill h1"></i>
+          </button>
         </div>
-        <div class="col-lg-8 p-2">
-            <div>
-                <form>
-                    <table>
-                        <tr>
-                            <th>
-                                <label for="idLabel">ID: </label>
-                            </th>
-                            <td>
-                                <input class="form-control" name="id" type="text" id="idLabel" [(ngModel)]="newCategory.CatID" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="nameLabel">Name: </label>
-                            </th>
-                            <td>
-                                <input class="form-control" name="name" id="nameLabel" type="text" [(ngModel)]="newCategory.CatName" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="descriptionLabel">Description: </label>
-                            </th>
-                            <td>
-                                <input class="form-control" name="description" type="text" id="descriptionLabel" [(ngModel)]="newCategory.CatDescription" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="positionLabel">Position: </label>
-                            </th>
-                            <td>
-                                <input class="form-control" name="position" type="text" id="positionLabel" [(ngModel)]="newCategory.Position" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="statusLabel">Status: </label>
-                            </th>
-                            <td>
-                                <input class="form-control" name="status" type="text" id="statusLabel" [(ngModel)]="newCategory.Status" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="createdAtLabel">Created At: </label>
-                            </th>
-                            <td>
-                                <input class="form-control" name="createdAt" type="text" id="createdAtLabel" [(ngModel)]="newCategory.CreatedAt" />
-                            </td>
-                        </tr>
-                    </table>
-                </form>
-            </div>
+        <div class="text-center fw-bold">Image</div>
+        <hr />
+        <input type="file" (change)="setUploadFile($event)" />
+      </div>
+      <div *ngIf="imageChanged">
+        <img width="100%" [src]="imageFile" alt="" />
+      </div>
+    </div>
+    <div class="col-lg-8 p-2">
+      <div>
+        <form>
+          <table>
+            <tr>
+              <th>
+                <label for="idLabel">ID: </label>
+              </th>
+              <td>
+                <input
+                  class="form-control"
+                  name="id"
+                  type="text"
+                  id="idLabel"
+                  [(ngModel)]="newCategory.CatID"
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="nameLabel">Name: </label>
+              </th>
+              <td>
+                <input
+                  class="form-control"
+                  name="name"
+                  id="nameLabel"
+                  type="text"
+                  [(ngModel)]="newCategory.CatName"
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="descriptionLabel">Description: </label>
+              </th>
+              <td>
+                <input
+                  class="form-control"
+                  name="description"
+                  type="text"
+                  id="descriptionLabel"
+                  [(ngModel)]="newCategory.CatDescription"
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="positionLabel">Position: </label>
+              </th>
+              <td>
+                <input
+                  class="form-control"
+                  name="position"
+                  type="text"
+                  id="positionLabel"
+                  [(ngModel)]="newCategory.Position"
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="statusLabel">Status: </label>
+              </th>
+              <td>
+                <input
+                  class="form-control"
+                  name="status"
+                  type="text"
+                  id="statusLabel"
+                  [(ngModel)]="newCategory.Status"
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label for="createdAtLabel">Created At: </label>
+              </th>
+              <td>
+                <input
+                  class="form-control"
+                  name="createdAt"
+                  type="text"
+                  id="createdAtLabel"
+                  [(ngModel)]="newCategory.CreatedAt"
+                />
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
 
-            <div class="pt-2 admin-controls" *ngIf="isAdmin()">
-                <button class="btn btn-primary d-inline-block" (click)="AddCategory()">
+      <div class="pt-2 admin-controls" *ngIf="isAdmin()">
+        <button class="btn btn-primary d-inline-block" (click)="AddCategory()">
           add
         </button>
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </div>
