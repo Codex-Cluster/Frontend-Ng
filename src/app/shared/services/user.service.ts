@@ -85,4 +85,8 @@ export class UserService {
       {}
     );
   }
+
+  validateCoupon(coupon: string) {
+    return this.http.get(this.BASE_URL + `/coupon?code=${coupon}`);
+  }
 }

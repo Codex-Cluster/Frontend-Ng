@@ -145,16 +145,24 @@
         <button
           class="btn btn-primary d-inline-block p-1 m-1"
           (click)="AddToWishlist()"
+          [disabled]="!isLoggedIn()"
         >
           <i class="bi bi-bookmark-heart h5"></i>
         </button>
         <button
           class="btn btn-warning d-inline-block p-1 m-1"
           (click)="AddToCart()"
+          [disabled]="!isLoggedIn()"
         >
           Add to cart
         </button>
-        <button class="btn btn-success d-inline-block p-1 m-1">Buy Now</button>
+        <button
+          class="btn btn-success d-inline-block p-1 m-1"
+          [disabled]="!isLoggedIn()"
+          (click)="GoToCheckOutPage()"
+        >
+          Buy Now
+        </button>
       </div>
     </div>
   </div>

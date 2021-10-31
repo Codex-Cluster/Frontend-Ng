@@ -1,0 +1,55 @@
+<div class="container mt-2">
+  <div class="text-center fw-bolder fs-2">Checkout</div>
+  <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+      <div class="border rounded row" *ngFor="let item of cart">
+        <div class="p-2">
+          <div class="col-8 p-2">
+            <div class="row">
+              <div class="fw-bold">Title:</div>
+              <div>{{ item.Title }}</div>
+            </div>
+            <div class="row">
+              <div class="fw-bold">Author:</div>
+              <div>{{ item.Author }}</div>
+            </div>
+          </div>
+          <div class="col-3 p-2" *ngIf="false">
+            <div class="row m-2">qty: {{ item.qty }}</div>
+            <div class="row m-2">
+              <button class="btn btn-success">Add</button>
+              <button class="btn btn-danger">Remove</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-2 text-center">
+        <button class="btn btn-primary" (click)="Proceed()">Proceed</button>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="text-center">
+        <div class="m-1">Add coupon</div>
+        <input [formControl]="couponControl" class="form-control" type="text" />
+        <div class="alert">
+          <div
+            class="alert-success rounded"
+            *ngIf="couponEntered && couponValid"
+          >
+            Applied coupon
+          </div>
+          <div
+            class="alert-danger rounded"
+            *ngIf="couponEntered && !couponValid"
+          >
+            Invalid coupon
+          </div>
+        </div>
+        <div class="p-1">
+          <button class="btn btn-info" (click)="ValidateCoupon()">Apply</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -15,6 +15,7 @@
               <div class="title text-start">{{ book.Title }}</div>
               <div class="text-start">
                 <div>{{ book.Author }}</div>
+                {{ book.datetime }}
                 <div>
                   <!-- <p>
                     <span class="fw-bold">Purchased on : </span>
@@ -40,6 +41,7 @@
                   type="button"
                   class="btn btn-danger m-1 p-1"
                   value="Cancel"
+                  (click)="CancelOrder(order)"
                 />
               </div>
             </div>

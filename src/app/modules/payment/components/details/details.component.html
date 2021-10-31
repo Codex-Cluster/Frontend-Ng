@@ -1,1 +1,166 @@
-<p>details works!</p>
+<div class="container mt-2">
+  <div class="text-center fw-bolder fs-2">Payment</div>
+  <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+      <div class="p-2">
+        <div class="p-2">
+          <div class="row">
+            <div class="col-6">Amount Payable:</div>
+            <div class="col-6">
+              {{ order.Amt | currency: "USD" }}
+              <div
+                *ngIf="appliedValidCoupon"
+                class="text-decoration-line-through"
+              >
+                {{ order.OldPrice }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text p-2 text-center fs-5 fw-bold">Enter card details</div>
+        <form class="form" [formGroup]="paymentFormGroup">
+          <div class="m-1 form-group">
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Card Number"
+              formControlName="cardNumber"
+              [ngClass]="{
+                'is-invalid':
+                  paymentFormGroup.get('cardNumber')?.invalid &&
+                  paymentFormGroup.get('cardNumber')?.touched
+              }"
+            />
+            <div class="invalid-feedback">
+              <div
+                *ngIf="paymentFormGroup.get('cardNumber')?.errors?.required"
+                class="text-danger"
+              >
+                Card number is required
+              </div>
+              <div
+                *ngIf="
+                  paymentFormGroup.get('cardNumber')?.errors?.maxlength ||
+                  paymentFormGroup.get('cardNumber')?.errors?.minlength
+                "
+                class="text-danger"
+              >
+                Ensure length 16 digits
+              </div>
+            </div>
+          </div>
+          <div class="m-1 d-flex justify-content-start">
+            <div class="w-75 d-inline-block pe-1 form-group">
+              <input
+                class="w-50 form-control d-inline-block border-end-0"
+                type="text"
+                placeholder="Month"
+                formControlName="expiryMonth"
+                [ngClass]="{
+                  'is-invalid':
+                    paymentFormGroup.get('expiryMonth')?.invalid &&
+                    paymentFormGroup.get('expiryMonth')?.touched
+                }"
+              />
+              <input
+                class="w-50 form-control d-inline-block border-start-0"
+                type="text"
+                placeholder="Year"
+                formControlName="expiryYear"
+                [ngClass]="{
+                  'is-invalid':
+                    paymentFormGroup.get('expiryYear')?.invalid &&
+                    paymentFormGroup.get('expiryYear')?.touched
+                }"
+              />
+              <div class="invalid-feedback">
+                <div
+                  *ngIf="
+                    paymentFormGroup.get('expiryMonth')?.errors?.required ||
+                    paymentFormGroup.get('expiryYear')?.errors?.required
+                  "
+                  class="text-danger"
+                >
+                  Expiry date is required
+                </div>
+                <div
+                  *ngIf="
+                    paymentFormGroup.get('expiryMonth')?.errors?.maxlength ||
+                    paymentFormGroup.get('expiryMonth')?.errors?.minlength ||
+                    paymentFormGroup.get('expiryYear')?.errors?.maxlength ||
+                    paymentFormGroup.get('expiryYear')?.errors?.minlength
+                  "
+                  class="text-danger"
+                >
+                  Ensure length 2 digits
+                </div>
+              </div>
+            </div>
+            <div class="w-25 d-inline-block ps-1 form-group">
+              <input
+                type="text"
+                class="form-control d-inline-block"
+                placeholder="CVV"
+                formControlName="cvv"
+                [ngClass]="{
+                  'is-invalid':
+                    paymentFormGroup.get('cvv')?.invalid &&
+                    paymentFormGroup.get('cvv')?.touched
+                }"
+              />
+              <div class="invalid-feedback">
+                <div
+                  *ngIf="paymentFormGroup.get('cvv')?.errors?.required"
+                  class="text-danger"
+                >
+                  CVV is required
+                </div>
+                <div
+                  *ngIf="
+                    paymentFormGroup.get('cvv')?.errors?.maxlength ||
+                    paymentFormGroup.get('cvv')?.errors?.minlength
+                  "
+                  class="text-danger"
+                >
+                  Ensure length 3 digits
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="m-1 w-100 pe-2 form-group">
+            <input
+              type="text"
+              class="form-control d-inline-block"
+              placeholder="Name on card"
+              formControlName="nameOnCard"
+              [ngClass]="{
+                'is-invalid':
+                  paymentFormGroup.get('nameOnCard')?.invalid &&
+                  paymentFormGroup.get('nameOnCard')?.touched
+              }"
+            />
+            <div class="invalid-feedback">
+              <div
+                *ngIf="paymentFormGroup.get('nameOnCard')?.errors?.required"
+                class="text-danger"
+              >
+                Name is required
+              </div>
+            </div>
+          </div>
+          <div class="w-75 mx-auto p-2">
+            <input
+              type="submit"
+              class="w-75 btn btn-secondary"
+              value="Pay"
+              (click)="makeOrder()"
+              [disabled]="paymentFormGroup.invalid"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-lg-3"></div>
+  </div>
+</div>

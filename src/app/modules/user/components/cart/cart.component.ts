@@ -50,6 +50,10 @@ export class CartComponent implements OnInit {
       }
     );
   }
+
+  GoToCheckOutPage() {
+    this.router.navigate(['payment', 'checkout']);
+  }
   ngOnInit(): void {
     this.getCart();
   }

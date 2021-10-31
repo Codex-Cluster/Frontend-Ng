@@ -28,6 +28,10 @@ export class BookDetailsComponent implements OnInit {
     this.bookID = this.activatedRoute.snapshot.paramMap.get('id')!.toString();
   }
 
+  isLoggedIn(): boolean {
+    return this.auth.isLoggedIn();
+  }
+
   isAdmin() {
     return this.admin.isAdmin();
   }
@@ -123,6 +127,10 @@ export class BookDetailsComponent implements OnInit {
           console.log('Complete');
         }
       );
+  }
+  GoToCheckOutPage() {
+    this.AddToCart();
+    this.route.navigate(['payment', 'checkout']);
   }
 
   ngOnInit(): void {
