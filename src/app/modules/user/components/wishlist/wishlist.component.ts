@@ -24,7 +24,6 @@ export class WishlistComponent implements OnInit {
     this.userService
       .MoveToCart(this.auth.getUserID(), item, qty)
       .subscribe((response) => {
-        console.log(`Successfully moved ${item}:${qty} to cart`);
         this.getWishlist();
       });
   }
@@ -43,14 +42,9 @@ export class WishlistComponent implements OnInit {
     this.userService
       .RemoveFromWishList(this.auth.getUserID(), bookID)
       .subscribe(
-        (response) => {
-          console.log('Removing book');
-        },
-        (error) => {
-          console.log('Error removing book');
-        },
+        (response) => {},
+        (error) => {},
         () => {
-          console.log('Successfully removed book');
           this.getWishlist();
         }
       );

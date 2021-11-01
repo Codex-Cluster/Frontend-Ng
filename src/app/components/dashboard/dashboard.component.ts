@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
     private searchService: SearchService
   ) {
     this.searchService.query = '';
+    this.auth.loadLoggedInData();
   }
 
   isAdmin() {

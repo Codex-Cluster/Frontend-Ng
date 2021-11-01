@@ -20,6 +20,8 @@ export class UserService {
 
   // PROFILE
   getUserData(): User {
+    this.auth.loadLoggedInData();
+    this.user = this.auth.getUser();
     return this.user;
   }
   modifyUserData(user: User): Observable<any> | Observable<boolean> {
