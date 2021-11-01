@@ -1,9 +1,16 @@
 <div class="row">
-    <div class="col-lg-3">
-        <app-side (categoryEmitter)="changeCategory($event)" [presentCategory]="catID"></app-side>
-    </div>
-    <div class="col-lg-9">
-        <app-main [Books]="Books" [presentCategory]="catName"></app-main>
-    </div>
-
+  <div class="col-lg-3">
+    <app-side
+      (categoryEmitter)="changeCategory($event)"
+      (sortByEmitter)="applySortBy($event)"
+      [presentCategory]="catID"
+    ></app-side>
+  </div>
+  <div class="col-lg-9">
+    <app-main
+      [Books]="Books"
+      [query]="query"
+      [presentCategory]="catName"
+    ></app-main>
+  </div>
 </div>

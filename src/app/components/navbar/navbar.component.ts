@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AdminService } from 'src/app/shared/services/admin.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CategoryService } from 'src/app/shared/services/category.service';
+import { SearchService } from 'src/app/shared/services/search.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,15 +12,22 @@ import { CategoryService } from 'src/app/shared/services/category.service';
 })
 export class NavbarComponent implements OnInit {
   categories: string[] = [];
+  query: any;
   constructor(
     private categoryService: CategoryService,
     private route: Router,
     private auth: AuthService,
-    private admin: AdminService
+    private admin: AdminService,
+    private searchService: SearchService
   ) {}
 
   navigate(loc: string) {
     this.route.navigate([loc]);
+  }
+
+  setQuery(event: any) {
+    // console.log(this.query);
+    this.searchService.setQuery(this.query);
   }
 
   isAdmin(): boolean {

@@ -13,6 +13,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AuthService } from './shared/services/auth.service';
 import { MakeDatePipe } from './shared/pipes/make-date.pipe';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MakeDatePipe } from './shared/pipes/make-date.pipe';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

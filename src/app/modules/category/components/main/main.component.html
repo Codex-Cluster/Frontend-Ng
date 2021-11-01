@@ -18,7 +18,9 @@
     class="m-2 p-2 custom-container"
     (click)="navigateToBook(book)"
     *ngFor="
-      let book of Books | paginate: { itemsPerPage: 20, currentPage: p };
+      let book of Books
+        | searchFilter: query
+        | paginate: { itemsPerPage: 20, currentPage: p };
       let i = index
     "
   >

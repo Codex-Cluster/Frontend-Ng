@@ -13,6 +13,7 @@ import { CategoryService } from 'src/app/shared/services/category.service';
 export class MainComponent implements OnInit {
   @Input() Books: Book[] = [];
   @Input() presentCategory: string = '';
+  @Input() query: any = '';
 
   catID: any;
   constructor(

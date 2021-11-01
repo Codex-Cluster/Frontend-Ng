@@ -1,4 +1,17 @@
-<div class="w-82 mx-auto p-2">
+<div class="w-82 mx-auto p-2 mt-3">
+  <div class="p-1 w-100 border rounded">
+    <div class="ms-1 fw-bold">Sort by:</div>
+    <mat-radio-group class="p-1" [formControl]="sortBy">
+      <mat-radio-button value="Default">Default</mat-radio-button>
+      <mat-radio-button value="Year">Year</mat-radio-button>
+      <mat-radio-button value="Rating">Rating</mat-radio-button>
+      <mat-radio-button value="Title">Title</mat-radio-button>
+      <mat-radio-button value="Author">Author</mat-radio-button>
+    </mat-radio-group>
+    <button class="w-100 btn btn-secondary mx-auto" (click)="applySortBy()">
+      Apply
+    </button>
+  </div>
   <ul class="list-group">
     <button
       class="navbar-toggler"

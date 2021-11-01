@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Category } from 'src/app/shared/models/category';
 import { CategoryService } from 'src/app/shared/services/category.service';
@@ -11,6 +12,7 @@ import { CategoryService } from 'src/app/shared/services/category.service';
 export class SideComponent implements OnInit {
   @Input() presentCategory: string;
   @Output() categoryEmitter = new EventEmitter();
+  @Output() sortByEmitter = new EventEmitter();
 
   changeCategory(category: string) {
     this.categoryEmitter.emit(category);
@@ -30,6 +32,12 @@ export class SideComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {
     this.presentCategory = '';
+  }
+
+  sortBy = new FormControl('Default', Validators.required);
+
+  applySortBy() {
+    this.sortByEmitter.emit(this.sortBy.value);
   }
 
   ngOnInit(): void {

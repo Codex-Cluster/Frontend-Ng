@@ -13,6 +13,11 @@ import { AuthService } from '../../shared/services/auth.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MakeDatePipe } from 'src/app/shared/pipes/make-date.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +32,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgxPaginationModule,
     FormsModule,
     ReactiveFormsModule,
+    MatIconModule,
+    MatFormFieldModule,
+    // MatSelectModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    SharedModule,
   ],
   providers: [
     CategoryService,

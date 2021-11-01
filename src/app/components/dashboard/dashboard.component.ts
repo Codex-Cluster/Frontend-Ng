@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { BookService } from 'src/app/shared/services/book.service';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { OrderService } from 'src/app/shared/services/order.service';
+import { SearchService } from 'src/app/shared/services/search.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,13 +16,17 @@ import { OrderService } from 'src/app/shared/services/order.service';
 })
 export class DashboardComponent implements OnInit {
   orders: any;
+  query: string = '';
   constructor(
     private categoryService: CategoryService,
     private bookService: BookService,
     private router: Router,
     private admin: AdminService,
-    private auth: AuthService
-  ) {}
+    private auth: AuthService,
+    private searchService: SearchService
+  ) {
+    this.searchService.query = '';
+  }
 
   isAdmin() {
     return this.admin.isAdmin();
@@ -74,6 +79,9 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.GetAllCategories();
     this.auth.loadLoggedInData();
+    this.searchService.queryUpdated.subscribe((query) => {
+      this.query = this.searchService.getQuery();
+    });
   }
 
   goToAddCategory() {
