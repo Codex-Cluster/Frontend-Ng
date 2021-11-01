@@ -26,6 +26,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
+import { PromoteComponent } from './components/promote/promote.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { MatChipsModule } from '@angular/material/chips';
     CouponComponent,
     UsersComponent,
     ControlsComponent,
+    PromoteComponent,
   ],
   imports: [
     CommonModule,
@@ -52,6 +55,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatAutocompleteModule,
     MatCheckboxModule,
     MatRadioModule,
+    SharedModule,
   ],
   providers: [AdminService, FirestorageService, CategoryService, BookService],
 })

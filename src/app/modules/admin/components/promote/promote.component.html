@@ -1,0 +1,128 @@
+<div>
+  <div class="row">
+    <div class="col-lg-1">
+      <button class="btn" (click)="goBack()">
+        <i class="bi bi-arrow-left-circle-fill h1"></i>
+      </button>
+    </div>
+    <div class="col-lg-11">
+      <button
+        class="btn btn-primary mx-3 my-1 p-2"
+        (click)="AddNewPromotion()"
+        data-bs-toggle="modal"
+        data-bs-target="#editPromotionModal"
+      >
+        Add
+      </button>
+      <div
+        class="btn card mx-3 my-1 p-2"
+        *ngFor="let p of promoted"
+        (click)="EditSelectedPromotion(p)"
+        data-bs-toggle="modal"
+        data-bs-target="#editPromotionModal"
+      >
+        <div class="row">
+          <div class="col-lg-3">
+            <div>BookID:</div>
+            <div>Expires On:</div>
+          </div>
+          <div class="col-lg-5">
+            <div>{{ p.bookID! }}</div>
+            <div>{{ p.expiresOn! }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="editPromotionModal"
+  tabindex="-1"
+  aria-labelledby="editPromotionModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editPromotionModalLabel">
+          Edit Promotions
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="promotionEditFormGroup">
+          <div class="row">
+            <div class="col-lg-10">
+              <div class="row">
+                <div class="col-3">
+                  <div class="p-2">BookID:</div>
+                </div>
+                <div class="col-5">
+                  <div class="form-group p-2">
+                    <input
+                      class="form-control"
+                      type="text"
+                      formControlName="bookID"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                  <div class="p-2">Expires On:</div>
+                </div>
+                <div class="col-5">
+                  <div class="form-group p-2">
+                    <input
+                      class="form-control"
+                      type="date"
+                      formControlName="expiresOn"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          *ngIf="modify"
+          type="button"
+          class="btn btn-primary"
+          (click)="saveChanges()"
+          data-bs-dismiss="modal"
+        >
+          Save changes
+        </button>
+        <button
+          *ngIf="!modify"
+          type="button"
+          class="btn btn-primary"
+          (click)="addPromotion()"
+          data-bs-dismiss="modal"
+        >
+          Add
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="deletePromotion()"
+          data-bs-dismiss="modal"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

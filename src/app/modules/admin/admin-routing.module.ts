@@ -7,6 +7,8 @@ import { AddCategoryComponent } from './components/add-category/add-category.com
 import { CouponComponent } from './components/coupon/coupon.component';
 import { UsersComponent } from './components/users/users.component';
 import { ControlsComponent } from './components/controls/controls.component';
+import { PromotedComponent } from 'src/app/components/promoted/promoted.component';
+import { PromoteComponent } from './components/promote/promote.component';
 
 const routes: Routes = [
   {
@@ -18,6 +20,7 @@ const routes: Routes = [
       { path: 'addCategory', component: AddCategoryComponent },
       { path: 'coupon', component: CouponComponent },
       { path: 'users', component: UsersComponent },
+      { path: 'promote', component: PromoteComponent },
     ],
   },
 ];

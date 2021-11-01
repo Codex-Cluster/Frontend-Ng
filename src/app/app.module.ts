@@ -14,6 +14,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AuthService } from './shared/services/auth.service';
 import { MakeDatePipe } from './shared/pipes/make-date.pipe';
 import { SharedModule } from './shared/shared.module';
+import { PromotedComponent } from './components/promoted/promoted.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SharedModule } from './shared/shared.module';
     DashboardComponent,
     NavbarComponent,
     MakeDatePipe,
+    PromotedComponent,
   ],
   imports: [
     BrowserModule,
