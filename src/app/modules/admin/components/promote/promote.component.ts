@@ -22,7 +22,7 @@ export class PromoteComponent implements OnInit {
     private location: Location
   ) {}
 
-  ngOnInit(): void {
+  getPromotedBooks() {
     this.promotedService.getPromoted().subscribe(
       (response) => {
         this.promoted = response;
@@ -43,9 +43,14 @@ export class PromoteComponent implements OnInit {
     });
   }
 
+  ngOnInit(): void {
+    this.getPromotedBooks();
+  }
+
   readonly promotionEditFormGroup: FormGroup = new FormGroup({
     bookID: new FormControl('', Validators.required),
     expiresOn: new FormControl('', Validators.required),
+    id: new FormControl(''),
   });
 
   AddNewPromotion() {
@@ -55,31 +60,31 @@ export class PromoteComponent implements OnInit {
   }
   EditSelectedPromotion(p: Promoted) {
     this.modify = true;
-    console.log(p);
     this.promotionEditFormGroup.get('bookID')?.setValue(p.bookID);
     this.promotionEditFormGroup
       .get('expiresOn')
       ?.setValue(p.expiresOn?.split(' ')[0].split('-').reverse().join('-'));
+    this.promotionEditFormGroup.get('id')?.setValue(p.id);
   }
 
   saveChanges() {
     let p = this.promotionEditFormGroup.value;
     this.promotedService.putPromoted(p).subscribe(
-      (response) => {
-        console.log(response);
-      },
+      (response) => {},
       (error) => {},
-      () => {}
+      () => {
+        this.getPromotedBooks();
+      }
     );
   }
   addPromotion() {
     let p = this.promotionEditFormGroup.value;
     this.promotedService.postPromoted(p).subscribe(
-      (response) => {
-        console.log(response);
-      },
+      (response) => {},
       (error) => {},
-      () => {}
+      () => {
+        this.getPromotedBooks();
+      }
     );
   }
   deletePromotion() {
@@ -87,7 +92,9 @@ export class PromoteComponent implements OnInit {
     this.promotedService.deletePromoted(p).subscribe(
       (response) => {},
       (error) => {},
-      () => {}
+      () => {
+        this.getPromotedBooks();
+      }
     );
   }
 

@@ -24,7 +24,7 @@ export class PromotedComponent implements OnInit {
     this.router.navigate(['category', b.CatID, 'book', b.BookID]);
   }
 
-  ngOnInit(): void {
+  getPromotedBooks() {
     this.promotedService.getPromoted().subscribe(
       (response) => {
         this.promoted = response;
@@ -45,5 +45,8 @@ export class PromotedComponent implements OnInit {
         });
       }
     );
+  }
+  ngOnInit(): void {
+    this.getPromotedBooks();
   }
 }

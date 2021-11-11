@@ -1,6 +1,6 @@
 <div *ngIf="show">
   <div class="mt-2 fw-bold fs-6 text-center">Currently being promoted</div>
-  <div class="mx-auto container border rounded row m-2 p-1">
+  <div class="mx-auto container border rounded row m-2 p-1 w-75">
     <div class="custom-container-box" *ngFor="let b of books">
       <button class="btn" (click)="GoToBook(b)">
         <img src="{{ b.Image }}" alt="" />

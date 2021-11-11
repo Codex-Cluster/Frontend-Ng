@@ -1,8 +1,11 @@
 input {
-    border: 1px black solid;
+  border: 1px black solid;
 }
 
 input:focus {
-    border: 1px #0F7173 dashed;
-    outline: 0 none;
+  border: 1px #0f7173 dashed;
+  outline: 0 none;
+}
+.img-container {
+  max-width: 300px;
 }
